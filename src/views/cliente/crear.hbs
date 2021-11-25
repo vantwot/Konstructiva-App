@@ -39,7 +39,7 @@
         <form action="/cliente/nuevo" method="POST">
         <div class="form-group" style="margin:10px;">
                 <label style="color:black;margin-left: 15px; margin-top:15px;">Nombre</label>
-                <input style="background-color:#F6EABE; margin-right:5px;" class="form-control" name="cedula">
+                <input onkeypress="return /[a-z ]/i.test(event.key)" style="background-color:#F6EABE; margin-right:5px;" class="form-control" name="cedula">
             </div>
             <div class="form-group" style="margin:10px;">
                 <label style="color:black;margin-left: 15px; margin-top:15px;">Cedula</label>
