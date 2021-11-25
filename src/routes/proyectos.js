@@ -1,0 +1,142 @@
+const router = require('express').Router();
+
+const Proyecto = require('../models/project');
+const Anticipo = require('../models/anticipos');
+const Cliente = require('../models/cliente');
+const Requerimiento = require('../models/requerimiento')
+
+router.get('/proyecto/add', (req, res) => {
+    res.render('proyecto/crear');
+});
+
+router.post('/proyecto/nuevo', async(req, res) => {
+    const { namep, fecha_inicio, fecha_fin, presupuesto } = req.body;
+    const errors = [];
+    if (!namep) {
+        errors.push({ text: 'Por favor inserte un nombre' });
+    }
+    if (!fecha_inicio) {
+        errors.push({ text: 'Por favor inserte una fecha de inicio' });
+    }
+    if (!fecha_fin) {
+        errors.push({ text: 'Por favor inserte una fecha de fin' });
+    }
+    if (!presupuesto) {
+        errors.push({ text: 'Por favor inserte un presupuesto' });
+    }
+    if(errors.length > 0){
+        res.render('proyecto/crear', {
+            errors,
+            namep,
+            fecha_inicio,
+            fecha_fin,
+            presupuesto
+        });
+    } else {
+
+        var total = 0;
+
+        presupuesto.forEach( elemento => {
+            total += parseInt(elemento.valor);
+        });
+
+        const newProyecto = Proyecto.build({namep: namep, fecha_inicio: fecha_inicio, fecha_fin: fecha_fin, presupuesto: total });
+        await newProyecto.save();
+        
+        presupuesto.forEach( async(elemento) => {
+            var req = await Requerimiento.create({ nombre: elemento.nombre, valor: elemento.valor })
+            req.setProyecto(newProyecto);
+            newProyecto.addRequerimiento(req);
+        });
+        
+        res.redirect('/proyecto/lista');
+    }
+});
+
+router.get('/proyecto/lista', async(req, res) => {
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
+    res.render("proyecto/lista", {proyectos});
+});
+
+router.get('/proyecto/modificar/:id',async(req, res) => {
+    const proyectos = await Proyecto.findByPk(req.params.id);
+    res.render('proyecto/editar', {proyectos});
+});
+
+router.post('/proyecto/editar/:id', async(req, res) => {
+    const { namep, fecha_inicio, fecha_fin } = req.body;
+    const proyectos = await Proyecto.findByPk(req.params.id);
+    const errors = [];
+    if (!namep) {
+        errors.push({ text: 'Por favor inserte un nombre' });
+    }
+    if (!fecha_inicio) {
+        errors.push({ text: 'Por favor inserte una fecha de inicio' });
+    }
+    if (!fecha_fin) {
+        errors.push({ text: 'Por favor inserte una fecha de fin' });
+    }
+    if(errors.length > 0){
+        res.render('proyecto/editar', {
+            proyectos,
+            errors,
+            namep,
+            fecha_inicio,
+            fecha_fin
+        });
+    } else {
+        await Proyecto.update({ namep: namep, fecha_inicio: fecha_inicio, fecha_fin: fecha_fin }, {
+            where: {
+                id: req.params.id, 
+            }
+        });
+        res.redirect('/proyecto/lista');
+    }
+});
+
+router.delete('/proyecto/eliminar/:id', async(req, res) =>{
+    await Proyecto.destroy({
+        where: {
+            id: req.params.id, 
+        }
+    });
+    res.redirect('/proyecto/lista');
+})
+
+router.get('/proyecto/anticipos/:id', async(req, res) => {
+    const proyecto = await Proyecto.findByPk(req.params.id);
+    console.log(proyecto)
+    res.render('proyecto/anticipo', { proyecto });
+});
+
+router.post('/proyecto/anticipos/:id/crear', async(req, res) => {
+    const { namean, valor } = req.body;
+    const errors = [];
+    if (!namean) {
+        errors.push({ text: 'Por favor inserte un nombre' });
+    }
+    if (!valor) {
+        errors.push({ text: 'Por favor inserte un valor' });
+    }
+    const proyecto = await Proyecto.findByPk(req.params.id);
+    if(errors.length > 0) {
+        res.render(`proyecto/anticipo`, {
+            proyecto,
+            errors,
+            namean,
+            valor
+        });
+    } else {
+        const anticipo = await Anticipo.create({ namean: namean, valor: valor });
+        anticipo.setProyecto(proyecto);
+        proyecto.addAnticipo(anticipo);
+        proyecto.anticipo = proyecto.anticipo + anticipo.valor;
+        proyecto.save()
+        res.redirect('/proyecto/lista');
+    }
+});
+
+router.get('/proyecto/actividades', (req, res) => {
+    res.send('activiades compplementarias del proyecto');
+});
+module.exports = router;
