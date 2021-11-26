@@ -1,19 +1,19 @@
 const router = require('express').Router();
+const Proyecto = require('../models/project');
 
-router.get('/ejecucion', (req,res) =>{
-    res.render("ejecucion/lista");
+
+// PARTE DE CONTRATOS
+
+router.get('/ejecucion/contratost', (req,res) =>{
+    res.render('ejecucion/lista-contratos');
 });
 
-router.get('/ejecucion/materiales', (req,res) =>{
-    res.send('parte de materiales');
+router.get('/ejecucion/crear-contratost', (req,res) =>{
+    res.render('ejecucion/crear-contratos');
 });
 
-router.get('/ejecucion/facturacion', (req,res) =>{
-    res.send('parte de facturacion y compras');
-});
-
-router.get('/ejecucion/personal-temporal', (req,res) =>{
-    res.send('parte de temporales');
+router.post('/ejecucion/nuevo-contratost', async (req,res) =>{
+    
 });
 
 module.exports = router;
