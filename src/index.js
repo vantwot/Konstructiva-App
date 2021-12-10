@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 var helpers = require('handlebars-helpers');
 var math = helpers.math();
 
+
 //Init
 const app = express();
 const sequelize = require('./database');
