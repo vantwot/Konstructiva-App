@@ -13,9 +13,9 @@
                 <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
 
-            </ul>
+</ul>
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -76,12 +76,12 @@
                         {{this.dataValues.valor}}
                     </p>
                     <center>
-                        <a href="/proyecto/modificar/{{this.dataValues.id}}" style="color:black" class="btn btn-brown btn-lg" type="submit">
+                        <a href="/ejecucion/modificar/{{this.dataValues.id}}" style="color:black" class="btn btn-brown btn-lg" type="submit">
                             Editar
                         </a>
                     </center>
                     <center>
-                        <form action="/proyecto/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
+                        <form action="/ejecucion/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
                             <input type="hidden" name="_method" value="DELETE">
                             <button style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
                                     class="btn btn-brown1 btn-block" type="submit">
@@ -107,5 +107,4 @@
     </div>
         
     {{/each}}
-</div>
 </div>

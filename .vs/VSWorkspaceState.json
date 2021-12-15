@@ -7,9 +7,7 @@
     "\\src\\views",
     "\\src\\views\\cliente",
     "\\src\\views\\ejecucion",
-    "\\src\\views\\layouts",
     "\\src\\views\\proyecto"
   ],
-  "SelectedNode": "\\src\\views\\ejecucion\\crear-contratos.hbs",
   "PreviewInSolutionExplorer": false
 }
