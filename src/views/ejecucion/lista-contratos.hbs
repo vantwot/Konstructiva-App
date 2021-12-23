@@ -13,17 +13,98 @@
                 <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
 
-            </ul>
+</ul>
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
-                <li class="tab"><a style="color:black;" href="/ejecucion/contratost">Lista de contratos temporales</a>
+                <li class="tab">
+                    <a style="color:black;" href="/ejecucion/contratost">Lista de contratos temporales</a>
                 </li>
-                <li class="tab"><a class="active" style="color:white;" href="/ejecucion/crear-contratost">Crear contrato
-                        temporal</a></li>
+                <li class="tab">
+                    <a class="active" style="color:white;" href="/ejecucion/crear-contratost">
+                        Crear contrato
+                        temporal
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
+
+    <div class="row" style="background-color: #F6D7A7;">
+        {{#each contratos}}
+        <div class="col-md-3" style="margin:30px;">
+            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Numero del contrato :
+                    </h6>
+                    <p>
+                        {{this.dataValues.numero}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Nombre del contratista :
+                    </h6>
+                    <p>
+                        {{this.dataValues.nombre}}
+                    </p>
+                    <p>
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Cedula :
+                    </h6>
+                    <p>
+                        {{this.dataValues.cedula}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Fecha de inicio del contrato :
+                    </h6>
+                    <p>
+                        {{this.dataValues.fecha_inicio}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Fecha de fin del contrato :
+                    </h6>
+                    <p>
+                        {{this.dataValues.fecha_fin}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Valor :
+                    </h6>
+                    <p>
+                        {{this.dataValues.valor}}
+                    </p>
+                    <center>
+                        <a href="/ejecucion/modificar/{{this.dataValues.id}}" style="color:black" class="btn btn-brown btn-lg" type="submit">
+                            Editar
+                        </a>
+                    </center>
+                    <center>
+                        <form action="/ejecucion/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
+                                    class="btn btn-brown1 btn-block" type="submit">
+                                Eliminar
+                            </button>
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="lead" style="text-align: center;">
+                        Todavía no has creado un contrato
+                    </p>
+                    <a href="/ejecucion/crear-contratost" class="btn btn-or btn-block">
+                        Crear un contrato
+                    </a>
+                </div>
+            </div>
+    </div>
+        
+    {{/each}}
 </div>
