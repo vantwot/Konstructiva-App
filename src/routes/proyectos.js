@@ -136,7 +136,13 @@ router.post('/proyecto/anticipos/:id/crear', async(req, res) => {
     }
 });
 
+
 router.get('/proyecto/actividades', (req, res) => {
     res.send('activiades compplementarias del proyecto');
+});
+
+
+router.get('/proyecto/compra', (req, res) => {
+    res.render('proyecto/compras');
 });
 module.exports = router;
