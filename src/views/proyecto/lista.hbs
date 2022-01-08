@@ -29,77 +29,88 @@
     {{#each proyectos}}
     <div class="col-md-3" style="margin:30px;">
       <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
-        <div class="card-body">
-          <h6 class="card-subtitle mb-2 text-muted">
-            Nombre Proyecto :
-          </h6>
-          <p>
-            {{this.dataValues.namep}}
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Nombre Cliente :
-          </h6>
-          <p>
-            {{#if this.dataValues.cliente}}
-              {{this.dataValues.cliente.dataValues.nombre}}
-            {{else}}
-              No hay ningún cliente asignado
-            {{/if}}
-          </p>
-          <p>
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Fecha Inicio :
-          </h6>
-          <p>
-            {{this.dataValues.fecha_inicio}}
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Fecha Fin :
-          </h6>
-          <p>
-            {{this.dataValues.fecha_fin}}
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Presupuesto :
-          </h6>
-          <p>
-            {{this.dataValues.presupuesto}}
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Anticipos :
-          </h6>
-          <p>
-            {{this.dataValues.anticipo}}
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">
-            Saldo :
-          </h6>
-          <p>
-            {{subtract this.dataValues.presupuesto this.dataValues.anticipo}}
-          </p>
-          <center>
-            <a href="/proyecto/modificar/{{this.dataValues.id}}" style="color:black" class="btn btn-brown btn-lg" type="submit">
-              Editar
-            </a>
-          </center>
-          <center>
-            <form action="/proyecto/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <button style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
-                class="btn btn-brown1 btn-block" type="submit">
-                Eliminar
-              </button>
-            </form>
-          </center>
-          <center>
-            <form action="/proyecto/anticipos/{{this.dataValues.id}}">
-              <button style="color:black;display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
-                class="btn btn-brown2 btn-block;"type="submit">
-                Anticipos
-              </button>
-          </center>
-        </div>
+          <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Nombre Proyecto :
+              </h6>
+              <p>
+                  {{this.dataValues.namep}}
+              </p>
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Nombre Cliente :
+              </h6>
+              <p>
+                  {{#if this.dataValues.cliente}}
+                  {{this.dataValues.cliente.dataValues.nombre}}
+                  {{else}}
+                  No hay ningún cliente asignado
+                  {{/if}}
+              </p>
+
+              <!-- ARREGLAR -->
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Contrato Temporal :
+              </h6>
+              <p>
+                  {{#if this.dataValues.contratos}}
+                  {{this.dataValues.contratos.dataValues.nombre}}
+                  {{else}}
+                  No hay ningún contrato asignado
+                  {{/if}}
+              </p>
+
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Fecha Inicio :
+              </h6>
+              <p>
+                  {{this.dataValues.fecha_inicio}}
+              </p>
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Fecha Fin :
+              </h6>
+              <p>
+                  {{this.dataValues.fecha_fin}}
+              </p>
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Presupuesto :
+              </h6>
+              <p>
+                  {{this.dataValues.presupuesto}}
+              </p>
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Anticipos :
+              </h6>
+              <p>
+                  {{this.dataValues.anticipo}}
+              </p>
+              <h6 class="card-subtitle mb-2 text-muted">
+                  Saldo :
+              </h6>
+              <p>
+                  {{subtract this.dataValues.presupuesto this.dataValues.anticipo}}
+              </p>
+              <center>
+                  <a href="/proyecto/modificar/{{this.dataValues.id}}" style="color:black" class="btn btn-brown btn-lg" type="submit">
+                      Editar
+                  </a>
+              </center>
+              <center>
+                  <form action="/proyecto/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
+                              class="btn btn-brown1 btn-block" type="submit">
+                          Eliminar
+                      </button>
+                  </form>
+              </center>
+              <center>
+                  <form action="/proyecto/anticipos/{{this.dataValues.id}}">
+                      <button style="color:black;display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
+                              class="btn btn-brown2 btn-block;" type="submit">
+                          Anticipos
+                      </button>
+              </center>
+          </div>
       </div>
     </div>
     {{else}}

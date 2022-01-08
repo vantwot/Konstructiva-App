@@ -4,6 +4,7 @@ const Proyecto = require('../models/project');
 const Anticipo = require('../models/anticipos');
 const Cliente = require('../models/cliente');
 const Requerimiento = require('../models/requerimiento')
+const Contrato = require('../models/contrato')
 
 router.get('/proyecto/add', (req, res) => {
     res.render('proyecto/crear');
@@ -54,7 +55,7 @@ router.post('/proyecto/nuevo', async(req, res) => {
 });
 
 router.get('/proyecto/lista', async(req, res) => {
-    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente, Contrato ]});
     res.render("proyecto/lista", {proyectos});
 });
 
