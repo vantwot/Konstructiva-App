@@ -78,6 +78,8 @@ app.use(require('./routes/contable'));
 app.use(require('./routes/ejecucion'));
 app.use(require('./routes/personal'));
 app.use(require('./routes/proyectos'));
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
 
 
 
@@ -97,7 +99,7 @@ app.listen(app.get('port'), () => {
     console.log('Port : ', app.get('port'));
 
     // Conectar base de datos
-    sequelize.sync({ force: true }).then(() => {
+    sequelize.sync({ force: false }).then(() => {
         console.log('Connection has been established successfully.');
     }).catch(error => {
         console.error('Unable to connect to the database:', error);
