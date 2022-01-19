@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\config",
+    "\\src\\controllers",
+    "\\src\\middleware",
     "\\src\\models",
     "\\src\\routes",
+    "\\src\\services",
     "\\src\\views",
-    "\\src\\views\\cliente",
-    "\\src\\views\\ejecucion",
-    "\\src\\views\\proyecto"
+    "\\src\\views\\users"
   ],
-  "SelectedNode": "\\src\\routes\\ejecucion.js",
+  "SelectedNode": "\\src\\views\\users\\ejecucion.hbs",
   "PreviewInSolutionExplorer": false
 }

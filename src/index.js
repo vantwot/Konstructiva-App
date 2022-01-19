@@ -12,7 +12,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 
-
 //Init
 const app = express();
 const sequelize = require('./database');
@@ -39,9 +38,20 @@ db.sequelize.sync({ force: true }).then(() => {
 
 
 
-// simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application." });
+// INICIAR SESION
+app.get("/login", (req, res) => {
+    res.render("users/login");
+});
+
+// REGISTRAR
+app.get("/signup", (req, res) => {
+    res.render("users/signup");
+});
+
+
+
+app.get("/admin", async (req, res) => {
+    res.render("users/admin");
 });
 
 
