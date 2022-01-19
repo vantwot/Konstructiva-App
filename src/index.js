@@ -3,46 +3,48 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const passport = require('passport');
 var flash = require('connect-flash');
 var helpers = require('handlebars-helpers');
 var math = helpers.math();
 var hbs = exphbs.create({});
+
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 
 
 //Init
 const app = express();
 const sequelize = require('./database');
-require('./models/passport');
 
-hbs.handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+var corsOptions = {
+    origin: "http://localhost:3000"
+};
 
-    switch (operator) {
-        case '==':
-            return (v1 == v2) ? options.fn(this) : options.inverse(this);
-        case '===':
-            return (v1 === v2) ? options.fn(this) : options.inverse(this);
-        case '!=':
-            return (v1 != v2) ? options.fn(this) : options.inverse(this);
-        case '!==':
-            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-        case '<':
-            return (v1 < v2) ? options.fn(this) : options.inverse(this);
-        case '<=':
-            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-        case '>':
-            return (v1 > v2) ? options.fn(this) : options.inverse(this);
-        case '>=':
-            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-        case '&&':
-            return (v1 && v2) ? options.fn(this) : options.inverse(this);
-        case '||':
-            return (v1 || v2) ? options.fn(this) : options.inverse(this);
-        default:
-            return options.inverse(this);
-    }
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require('./models');
+const Role = db.role;
+
+db.sequelize.sync({ force: true }).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
 });
+
+
+
+// simple route
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to bezkoder application." });
+});
+
+
 
 
 //Settings
@@ -64,8 +66,7 @@ app.use(session({
     secret: 'secret',
     saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(flash())
 
 
@@ -77,7 +78,8 @@ app.use(require('./routes/contable'));
 app.use(require('./routes/ejecucion'));
 app.use(require('./routes/personal'));
 app.use(require('./routes/proyectos'));
-app.use(require('./routes/login'));
+
+
 
 // Node Modules
 app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css')))
@@ -95,9 +97,26 @@ app.listen(app.get('port'), () => {
     console.log('Port : ', app.get('port'));
 
     // Conectar base de datos
-    sequelize.sync({ force: false }).then(() => {
+    sequelize.sync({ force: true }).then(() => {
         console.log('Connection has been established successfully.');
     }).catch(error => {
         console.error('Unable to connect to the database:', error);
     })
 });
+
+function initial() {
+    Role.create({
+        id: 1,
+        name: "user"
+    });
+
+    Role.create({
+        id: 2,
+        name: "moderator"
+    });
+
+    Role.create({
+        id: 3,
+        name: "admin"
+    });
+}
