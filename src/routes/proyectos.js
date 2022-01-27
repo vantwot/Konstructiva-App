@@ -142,7 +142,19 @@ router.get('/proyecto/actividades', (req, res) => {
 });
 
 
-router.get('/proyecto/compra', (req, res) => {
-    res.render('proyecto/compras');
+router.get('/proyecto/compra', async(req, res) => {
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
+    res.render("proyecto/compras", {proyectos});
 });
+
+router.post('/proyecto/subirArchivo',(req,res) => {
+    let EDFile = req.files.file
+    EDFile.mv(`./src/files/${EDFile.name}`,err => {
+        if(err) return res.status(500).send({ message : err })
+
+        return res.status(200).send({ message : 'File upload' })
+    })
+    res.redirect('/proyecto/compra');
+})
+
 module.exports = router;

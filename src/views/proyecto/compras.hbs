@@ -43,10 +43,14 @@
             {{this.dataValues.anticipo}}
           </p>
           <center>
-            <form action="/proyecto/anticipos/{{this.dataValues.id}}">
+            <form action="/proyecto/subirArchivo/{{this.dataValues.id}}" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="subirPdf">Subir facturas</label>
                     <input type="file" name="subirPdf" id="subirPdf"> 
+                    <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                      class="btn btn-brown2 btn-block" type="submit">
+                      Guardar factura
+                    </button>
                 </div>
             </form>
           </center>
