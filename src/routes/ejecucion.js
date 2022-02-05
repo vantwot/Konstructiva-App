@@ -13,6 +13,10 @@ router.get('/ejecucion/crear-contratost', (req,res) =>{
     res.render('ejecucion/crear-contratos');
 });
 
+router.get('/ejecucion/user', (req, res) => {
+    res.render('users/vistaCompras');
+});
+
 router.get('/ejecucion/modificar/:id', async (req, res) => {
     const contratos = await Contrato.findByPk(req.params.id);
     res.render('ejecucion/editar-contratos', { contratos });

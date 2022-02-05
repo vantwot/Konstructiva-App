@@ -1,8 +1,8 @@
 const db = require("../models");
-const config = require("../config/auth.config");
 const User = db.user;
 const Role = db.role;
 const session = require('express-session');
+const config = require("../config/auth.config");
 
 const Op = db.Sequelize.Op;
 
@@ -21,7 +21,7 @@ exports.signup = (req, res) => {
         .catch(err => {
             res.status(500).send({ message: err.message });
         });
-    res.redirect('/login');
+    res.redirect('/signup');
 };
 
 exports.signin = (req, res) => {
@@ -47,12 +47,16 @@ exports.signin = (req, res) => {
                 });
             }
 
-            if (user.role == "admin") {
+            if (user.role == "administrador") { //Si es admin mostrar cinco modulos
                 res.render('users/admin', { user });
             }
 
-            if (user.role == "ejecucion") {
+            if (user.role == "compras") { // Si es compras mostrar modulo ejecucion
                 res.render('users/ejecucion', { user });
+            }
+
+            if (user.role == "contador") { // Si es contador mostrar modulo reportes
+                res.render('users/contador', { user });
             }
 
             var token = jwt.sign({ id: user.id }, config.secret, {
