@@ -13,7 +13,7 @@
         <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
         <li><a style="color:white;" href="collapsible.html">Personal</a></li>
         <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
-                      <a href="/login" class="btn btn-red">Cerrar sesión </a>
+        <a href="/login" class="btn btn-red">Cerrar sesión </a>
 
       </ul>
     </div>
@@ -44,14 +44,24 @@
           </p>
           <center>
             <form action="/proyecto/subirArchivo/{{this.dataValues.id}}" method="POST" enctype="multipart/form-data">
-                <div>
-                    <label for="subirPdf">Subir facturas</label>
-                    <input type="file" name="subirPdf" id="subirPdf"> 
-                    <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                      class="btn btn-brown2 btn-block" type="submit">
-                      Guardar factura
+              <div>
+                <!-- <label style="color:black" for="subirPdf">Subir facturas</label>
+                          <input type="file" name="subirPdf" id="subirPdf">
+                          <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                          class="btn btn-brown2 btn-block" type="submit">
+                          Guardar factura
                     </button>
+                     -->
+                <div class="form-group col s6" style="margin:25px;">
+                  <label style="color:black" for="nombre-requerimiento">URL</label>
+                  <input id="nombre-requerimiento" type="text" name="nombre">
+                  <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown2 btn-block" type="submit">
+                    Guardar factura
+                  </button>
+
                 </div>
+              </div>
             </form>
           </center>
         </div>
