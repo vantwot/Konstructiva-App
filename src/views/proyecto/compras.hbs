@@ -13,7 +13,7 @@
         <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
         <li><a style="color:white;" href="collapsible.html">Personal</a></li>
         <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
-                      <a href="/login" class="btn btn-red">Cerrar sesión </a>
+        <a href="/login" class="btn btn-red">Cerrar sesión </a>
 
       </ul>
     </div>
@@ -21,7 +21,7 @@
       <ul class="tabs tabs-transparent">
         <li class="tab"><a style="color:White;" href="/proyecto/lista">Lista de proyectos</a></li>
         <li class="tab"><a class="active" style="color:white;" href="/proyecto/add">Crear</a></li>
-        <li class="tab"><a style="color:black;" href="/proyecto/compras">Compras</a></li>
+        <li class="tab"><a style="color:black;" href="/proyecto/compra">Compras</a></li>
       </ul>
     </div>
   </nav>
@@ -43,11 +43,25 @@
             {{this.dataValues.anticipo}}
           </p>
           <center>
-            <form action="/proyecto/anticipos/{{this.dataValues.id}}">
-                <div>
-                    <label for="subirPdf">Subir facturas</label>
-                    <input type="file" name="subirPdf" id="subirPdf"> 
+            <form action="/proyecto/subirArchivo/{{this.dataValues.id}}" method="POST" enctype="multipart/form-data">
+              <div>
+                <!-- <label style="color:black" for="subirPdf">Subir facturas</label>
+                          <input type="file" name="subirPdf" id="subirPdf">
+                          <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                          class="btn btn-brown2 btn-block" type="submit">
+                          Guardar factura
+                    </button>
+                     -->
+                <div class="form-group col s6" style="margin:25px;">
+                  <label style="color:black;margin-left: 15px; margin-top:15px;">link</label>
+                  <input type="text" style="margin-right:5px;" class="form-control" name="link">
+                  <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown2 btn-block" type="submit">
+                    Guardar factura
+                  </button>
+
                 </div>
+              </div>
             </form>
           </center>
         </div>

@@ -6,6 +6,7 @@ const Cliente = require('../models/cliente');
 const Requerimiento = require('../models/requerimiento')
 const Contrato = require('../models/contrato')
 
+
 router.get('/proyecto/add', (req, res) => {
     res.render('proyecto/crear');
 });
@@ -146,8 +147,31 @@ router.get('/proyecto/actividades', (req, res) => {
     res.send('activiades compplementarias del proyecto');
 });
 
+    
+    /*const errors = [];
+    if (!linkFactura) {
+        errors.push({ text: 'Por favor inserte el link de la factura' });
+    } 
+    if(errors.length > 0) {
+        res.render(`/proyecto/subirArchivo`, {
+            facturas,
+            linkFactura
+        });
+    } else{
+        const newFactura = await Factura.build({link: linkFactura });
+        await newFactura.save();
+        
+        res.redirect('/proyecto/lista');
+    }*/
+    
+/*router.post('/proyecto/subirArchivo',(req,res) => {
+    let EDFile = req.files.file
+    EDFile.mv(`./src/files/${EDFile.name}`,err => {
+        if(err) return res.status(500).send({ message : err })
 
-router.get('/proyecto/compra', (req, res) => {
-    res.render('proyecto/compras');
-});
+        return res.status(200).send({ message : 'File upload' })
+    })
+    res.redirect('/proyecto/compra');
+})*/
+
 module.exports = router;

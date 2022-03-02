@@ -1,4 +1,5 @@
 const express = require('express');
+const fileUpload = require('express-fileupload')
 const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
@@ -72,6 +73,7 @@ app.use(session({
 }));
 
 app.use(flash())
+app.use(fileUpload())
 
 
 // Glob
