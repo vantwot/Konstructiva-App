@@ -1,5 +1,8 @@
 const router = require('express').Router();
+const Proyecto = require('../models/project');
 const Contrato = require('../models/contrato')
+const Factura = require('../models/factura')
+const Cliente = require('../models/cliente');
 
 // PARTE DE CONTRATOS
 
@@ -106,6 +109,35 @@ router.post('/ejecucion/nuevo-contratost', async (req, res) => {
         res.redirect('/ejecucion/contratost');
     }
     
+});
+router.get('/ejecucion/compra', async(req, res) => {
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
+    res.render("ejecucion/compras", {proyectos});
+});
+
+router.post('/ejecucion/subirArchivo/:id', async (req,res) => {
+    //const facturas = await Factura.findByPk(req.params.id);
+    const {link}=req.body;
+    const errors = [];
+    //const {id}=req.params.id;
+    const newFactura = Factura.build({link: link});
+    if (!link) {
+        errors.push({ text: 'Por favor inserte el link de la factura' });
+    }
+    if(errors.length > 0) {
+        res.render(`/ejecucion/subirArchivo`, {
+            newFactura,
+            link
+        });
+    } else{
+        await newFactura.update({link: link, proyectoId: req.params.id}, {
+            where: {
+                proyectoId: null,
+            }
+        });
+        await newFactura.save();
+        res.redirect('/ejecucion/contratost');
+    }
 });
 
 module.exports = router;

@@ -4,7 +4,7 @@ const Proyecto = require('../models/project');
 const Anticipo = require('../models/anticipos');
 const Cliente = require('../models/cliente');
 const Requerimiento = require('../models/requerimiento')
-const Factura = require('../models/factura')
+
 
 router.get('/proyecto/add', (req, res) => {
     res.render('proyecto/crear');
@@ -142,35 +142,6 @@ router.get('/proyecto/actividades', (req, res) => {
     res.send('activiades compplementarias del proyecto');
 });
 
-
-router.get('/proyecto/compra', async(req, res) => {
-    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
-    res.render("proyecto/compras", {proyectos});
-});
-
-router.post('/proyecto/subirArchivo/:id', async (req,res) => {
-    //const facturas = await Factura.findByPk(req.params.id);
-    const {link}=req.body;
-    const errors = [];
-    //const {id}=req.params.id;
-    const newFactura = Factura.build({link: link});
-    if (!link) {
-        errors.push({ text: 'Por favor inserte el link de la factura' });
-    }
-    if(errors.length > 0) {
-        res.render(`/proyecto/subirArchivo`, {
-            newFactura,
-            link
-        });
-    } else{
-        await newFactura.update({link: link, proyectoId: req.params.id}, {
-            where: {
-                proyectoId: null,
-            }
-        });
-        await newFactura.save();
-        res.redirect('/proyecto/lista');
-    }
     
     /*const errors = [];
     if (!linkFactura) {
@@ -188,7 +159,6 @@ router.post('/proyecto/subirArchivo/:id', async (req,res) => {
         res.redirect('/proyecto/lista');
     }*/
     
-})
 /*router.post('/proyecto/subirArchivo',(req,res) => {
     let EDFile = req.files.file
     EDFile.mv(`./src/files/${EDFile.name}`,err => {
