@@ -11,10 +11,6 @@ router.get('/proyecto/add', (req, res) => {
     res.render('proyecto/crear');
 });
 
-router.get('/loginit', (req, res) => {
-    res.render('login/inicio');
-});
-
 router.post('/proyecto/nuevo', async(req, res) => {
     const { namep, fecha_inicio, fecha_fin, presupuesto } = req.body;
     const errors = [];
