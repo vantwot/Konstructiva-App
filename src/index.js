@@ -4,20 +4,56 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const passport = require('passport');
 var flash = require('connect-flash');
 var helpers = require('handlebars-helpers');
 var math = helpers.math();
+var hbs = exphbs.create({});
+
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 
 //Init
 const app = express();
 const sequelize = require('./database');
-require('./models/passport');
+
+var corsOptions = {
+    origin: "http://localhost:8080"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require('./models');
+db.sequelize.sync({ force: false }) //borar usuarios = true
+
+
+// INICIAR SESION
+app.get("/login", (req, res) => {
+    res.render("users/login");
+});
+
+// REGISTRAR
+app.get("/signup", (req, res) => {
+    res.render("users/signup");
+});
+
+
+
+app.get("/admin", async (req, res) => {
+    res.render("users/admin");
+});
+
+
 
 
 //Settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -35,8 +71,7 @@ app.use(session({
     secret: 'secret',
     saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(flash())
 app.use(fileUpload())
 
@@ -49,7 +84,10 @@ app.use(require('./routes/contable'));
 app.use(require('./routes/ejecucion'));
 app.use(require('./routes/personal'));
 app.use(require('./routes/proyectos'));
-app.use(require('./routes/login'));
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+
+
 
 // Node Modules
 app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css')))

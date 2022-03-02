@@ -70,6 +70,20 @@
                     <p>
                         {{this.dataValues.fecha_fin}}
                     </p>
+
+                    <h6 class="card-subtitle mb-2 text-muted" style="color: black;">
+                        Proyecto Asignado:
+                    </h6>
+
+                    <p>
+                        {{#if this.dataValues.proyecto}}
+                        {{this.dataValues.proyecto.dataValues.namep}}
+                        {{else}}
+                        <b style="color:#2E7373 ;">No hay un proyecto asignado</b>
+                        {{/if}}
+                    </p>
+
+
                     <h6 class="card-subtitle mb-2 text-muted">
                         Valor :
                     </h6>
@@ -89,6 +103,16 @@
                                 Eliminar
                             </button>
                         </form>
+                    </center>
+                    <center>
+                        <p>
+                            {{#if this.dataValues.proyecto}}
+                            {{else}}
+                            <a href="/ejecucion/{{this.dataValues.id}}/asignar" class="btn btn-brown btn-lg" type="submit">
+                                Asignar Proyecto
+                            </a>
+                            {{/if}}
+                        </p>
                     </center>
                 </div>
             </div>
