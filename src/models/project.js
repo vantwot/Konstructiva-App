@@ -7,6 +7,7 @@ const Requerimiento = require('./requerimiento')
 const Contrato = require('./contrato')
 const Material = require('./material')
 const Personal = require('./personal')
+const Factura = require('./factura')
 
 class Proyecto extends Model {}
 
@@ -39,5 +40,8 @@ Material.belongsTo(Proyecto)
 
 Proyecto.hasMany(Personal)
 Personal.belongsTo(Proyecto)
+
+Proyecto.hasMany(Factura)
+Factura.belongsTo(Proyecto)
 
 module.exports = Proyecto;
