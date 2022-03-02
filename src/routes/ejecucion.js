@@ -39,8 +39,8 @@ router.get('/ejecucion/:id_contrato/asignar', async (req, res) => {
 
 router.get('/ejecucion/:id_contrato/asignar/:id', async (req, res) => {
     const id_contrato = req.params.id_contrato
+    const contrato = await Contrato.findByPk(id_contrato);
     const proyectos = await Proyecto.findAll();
-    const contrato = await Contrato.findByPk(req.params.id_contrato);
     const proyecto = await Proyecto.findByPk(req.params.id);
     const errors = [];
     if (contrato.valor > proyecto.anticipo) {
@@ -54,15 +54,18 @@ router.get('/ejecucion/:id_contrato/asignar/:id', async (req, res) => {
         
     }
     else {
-        await contrato.update({ proyectold: proyecto.id}, {
+        await contrato.update({ proyectoId: proyecto.id}, {
             where: {
                 id: req.params.id_contrato,
             }
         });
+        proyecto.setContratos(contrato);
         contrato.setProyecto(proyecto);
+        
         //ASIGNARLE EL CONTRATO AL PROYECTO, NO SE COMO SE HACE YA QUE EN PROYECTO NO HAY NINGUN CAMPO PARA CONTRATOS proyecto.setContratos(contrato);
-        //await proyecto.save()
+        await proyecto.save()
         await contrato.save()
+        
         res.redirect('/ejecucion/contratost');       
     }
 
