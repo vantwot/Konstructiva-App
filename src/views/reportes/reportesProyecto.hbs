@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<div class="body">
+    <nav class="nav-extended" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
+                <li><a style="color:black;" href="/reportes/info-proyectos">Reportes</a></li>
+                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+
+            </ul>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a style="color:black;" href="/reportes/info-proyectos">Información de proyectos</a>
+                </li>
+                <li class="tab"><a class="active" style="color:white;" href="/reportes/info-contratost">Información de contratos temporales</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row" style="background-color: #F6D7A7;">
+        {{#each proyectos}}
+        <div class="col-md-3" style="margin:30px;">
+            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Nombre Proyecto 
+                    </h6>
+                    <p>
+                        {{this.dataValues.namep}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Fecha Inicio 
+                    </h6>
+                    <p>
+                        {{this.dataValues.fecha_inicio}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Fecha Fin 
+                    </h6>
+                    <p>
+                        {{this.dataValues.fecha_fin}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Presupuesto 
+                    </h6>
+                    <p>
+                        {{this.dataValues.presupuesto}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Anticipos 
+                    </h6>
+                    <p>
+                        {{this.dataValues.anticipo}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Saldo 
+                    </h6>
+                    <p>
+                        {{subtract this.dataValues.presupuesto this.dataValues.anticipo}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

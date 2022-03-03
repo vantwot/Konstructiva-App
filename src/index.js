@@ -80,7 +80,7 @@ app.use(fileUpload())
 
 //Routes
 app.use(require('./routes/cliente'));
-app.use(require('./routes/contable'));
+app.use(require('./routes/reportes'));
 app.use(require('./routes/ejecucion'));
 app.use(require('./routes/personal'));
 app.use(require('./routes/proyectos'));

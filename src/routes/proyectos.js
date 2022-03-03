@@ -6,7 +6,6 @@ const Cliente = require('../models/cliente');
 const Requerimiento = require('../models/requerimiento')
 const Contrato = require('../models/contrato')
 
-
 router.get('/proyecto/add', (req, res) => {
     res.render('proyecto/crear');
 });
