@@ -4,7 +4,11 @@
     font-family: 'Tahoma', sans-serif;
     position: absolute;
     width:90rem;
-    height: 61rem;
+    height: 70rem;
+}
+
+.p1 {
+  font-family: "Times New Roman", Times, serif;
 }
 .cuadrado {
     padding: 5px;

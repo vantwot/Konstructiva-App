@@ -5,22 +5,22 @@
 <div class="body">
     <nav class="nav-extended" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b class="p1">Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a style="color:black;" href="/proyecto/lista">Proyectos</a></li>
-                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
-                <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
-                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
-               <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <li><a class="p1"style="color:black;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a class="p1"style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a class="p1"style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a class="p1"style="color:white;" href="collapsible.html">Personal</a></li>
+               <li><a class="p1"style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <a href="/login" class="btn btn-red p1">Cerrar sesión </a>
 
             </ul>
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
-                <li class="tab"><a style="color:black;" href="/proyecto/lista">Lista de proyectos</a></li>
-                <li class="tab"><a class="active" style="color:white;" href="/proyecto/add">Crear</a></li>
+                <li class="tab p1"><a style="color:black;" href="/proyecto/lista">Lista de proyectos</a></li>
+                <li class="tab p1"><a class="active" style="color:white;" href="/proyecto/add">Crear</a></li>
             </ul>
         </div>
     </nav>
@@ -31,50 +31,50 @@
             <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b>Nombre Proyecto </b>
+                        <b class="p1">Nombre Proyecto </b>
                     </h6>
                     <p>
-                        {{this.dataValues.namep}}
+                        <i class="p1">{{this.dataValues.namep}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b>Nombre Cliente</b> 
+                        <b class="p1">Nombre Cliente</b> 
                     </h6>
                     <p>
                         {{#if this.dataValues.cliente}}
-                        {{this.dataValues.cliente.dataValues.nombre}}
+                        <i class="p1">{{this.dataValues.cliente.dataValues.nombre}}</i>
                         {{else}}
-                        No hay ningún cliente asignado
+                        <i class="p1">No hay ningún cliente asignado</i>
                         {{/if}}
                     </p>
 
                     <!-- ARREGLAR -->
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b>Contrato Temporal</b> 
+                        <b class="p1">Contrato Temporal</b> 
                     </h6>
                     <p>
                         {{#if this.dataValues.contratos}}
-                        {{this.dataValues.contratos.dataValues.nombre}}
+                        <i class="p1"{{this.dataValues.contratos.dataValues.nombre}}</i>
                         {{else}}
-                        No hay ningún contrato asignado
+                        <i class="p1">No hay ningún contrato asignado</i>
                         {{/if}}
                     </p>
 
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b>Fecha de incio</b> 
+                        <b class="p1">Fecha de incio</b> 
                     </h6>
                     <p>
-                        {{this.dataValues.fecha_inicio}}
+                        <i>{{this.dataValues.fecha_inicio}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b>Fecha de finalización</b> 
+                        <b class="p1">Fecha de finalización</b> 
                     </h6>
                     <p>
-                        {{this.dataValues.fecha_fin}}
+                        <i class="p1">{{this.dataValues.fecha_fin}}</i>
                     </p>
                     <center>
                         <a href="/proyecto/modificar/{{this.dataValues.id}}" style="color:black"
                             class="btn btn-brown btn-lg" type="submit">
-                            <b>Editar</b>
+                            <b class="p1">Editar</b>
                         </a>
                     </center>
                     <center>
@@ -83,7 +83,7 @@
                             <button
                                 style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
                                 class="btn btn-brown1 btn-block" type="submit">
-                                <b>Eliminar</b>
+                                <b class="p1">Eliminar</b>
                             </button>
                         </form>
                     </center>
@@ -92,7 +92,7 @@
                             <button
                                 style="color:black;display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
                                 class="btn btn-brown2 btn-block;" type="submit">
-                                <b>Anticipos</b>
+                                <b class="p1">Anticipos</b>
                             </button>
                     </center>
                 </div>
@@ -102,10 +102,10 @@
         <center>
             <div class="card mx-auto">
                 <div class="card-body">
-                    <p class="lead" style="text-align: center;">
+                    <p class="lead p1" style="text-align: center;">
                         Todavía no has creado un proyecto
                     </p>
-                    <a href="/proyecto/add" class="btn btn-or btn-block">
+                    <a href="/proyecto/add" class="p1 btn btn-or btn-block">
                         Crear un proyecto
                     </a>
                 </div>

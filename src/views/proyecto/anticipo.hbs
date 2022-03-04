@@ -28,20 +28,20 @@
 
     <div class="caja">
         <form action="/proyecto/anticipos/{{proyecto.dataValues.id}}/crear" method="POST">
-
-            <div class="form-grop" style="margin:10px;">
-                <label style="color:black; margin-left: 15px; margin-top:15px;">Nombre</label>
-                <input type="text" style="margin-right:5px;" class="form-control" name="namean">
+            <h5 style="color:black; margin-left:15px; margin-top:25px;"> <b>Agregar anticipos</b></h5>
+            <div class="form-group col s5" style="margin:10px;">
+                <label style="margin-left: 15px; margin-top:15px; color:black"><b><i>Nombre </i></b></label>
+                <input type="text" style="margin-right:5px;" class="form-control" name="namean" autofocus />
+            </div>
+            <div class="form-group col s5" style="margin:10px;">
+                <label style="margin-left: 15px; margin-top:15px; color:black"><b><i>Valor</i></b></label>
+                <input type="number" style="margin-right:5px;" class="form-control" name="valor" />
             </div>
 
-            <div class="form-grop" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;">Valor</label>
-                <input type="number" style="margin-right:5px;" class="form-control" name="valor">
-            </div>
             <div class="form-group">
                 <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
                     class="btn btn-brown2 btn-block" type="submit">
-                    Crear
+                    <b>Aregar</b>
                 </button>
             </div>
         </form>

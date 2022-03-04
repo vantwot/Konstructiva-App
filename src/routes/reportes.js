@@ -15,4 +15,8 @@ router.get('/reportes/info-contratost', async (req,res) =>{
     res.render("reportes/reporteContratosT.hbs", { contratos });
 });
 
+router.get('/reportes/info-grafica1', async (req,res) =>{
+    const contratos = await Contrato.findAll();
+    res.render("reportes/reporteGrafico1.hbs", { contratos });
+});
 module.exports = router;
