@@ -16,7 +16,7 @@ router.get('/reportes/info-contratost', async (req,res) =>{
 });
 
 router.get('/reportes/info-grafica1', async (req,res) =>{
-    const contratos = await Contrato.findAll();
-    res.render("reportes/reporteGrafico1.hbs", { contratos });
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente, Contrato ]});
+    res.render("reportes/reporteGrafico1.hbs", { proyectos });
 });
 module.exports = router;
