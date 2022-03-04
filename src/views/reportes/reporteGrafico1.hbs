@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<div class="body">
+    <nav class="nav-extended" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
+                <li><a style="color:black;" href="/reportes/info-proyectos">Reportes</a></li>
+                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+
+            </ul>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a style="color:white;" href="/reportes/info-proyectos">Información de proyectos</a>
+                </li>
+                <li class="tab"><a class="active" style="color:white;" href="/reportes/info-contratost">Información de
+                        contratos temporales</a></li>
+                <li class="tab"><a style="color:black;" href="/reportes/info-grafica1">Información Gráfica</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row" style="background-color: #F6D7A7;">
+        {{#each proyectos}}
+        <div class="col-md-3" style="margin:30px;">
+            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <b class="p1">Nombre Proyecto </b>
+                    </h6>
+                    <p>
+                        <i class="p1">{{this.dataValues.namep}}</i>
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <b class="p1">Anticipos</b>
+                    </h6>
+                    <p>
+                        <i class="p1">{{this.dataValues.anticipo}}</i>
+                    </p>
+                    <center>
+                        <form action="/proyecto/anticipos/{{this.dataValues.id}}">
+                            <button
+                                style="color:black;display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
+                                class="btn btn-brown2 btn-block;" type="submit">
+                                <b class="p1">Anticipos</b>
+                            </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <center>
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="lead p1" style="text-align: center;">
+                        Todavía no has creado ningún proyecto
+                    </p>
+                </div>
+            </div>
+        </center>
+        {{/each}}
+    </div>
+</div>
