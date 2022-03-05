@@ -28,4 +28,44 @@
             </ul>
         </div>
     </nav>
+    <div class="row" style="background-color: #F6D7A7;">
+        {{#each proyectos}}
+        <div class="col-md-3" style="margin:30px;">
+            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <b class="p1">Nombre Proyecto </b>
+                    </h6>
+                    <p>
+                        <i class="p1">{{this.dataValues.namep}}</i>
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <b class="p1">Anticipos</b>
+                    </h6>
+                    <p>
+                        <i class="p1">{{this.dataValues.anticipo}}</i>
+                    </p>
+                    <center>
+                        <form action="/proyecto/anticipos/{{this.dataValues.id}}">
+                            <button
+                                style="color:black;display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
+                                class="btn btn-brown2 btn-block;" type="submit">
+                                <b class="p1">Anticipos</b>
+                            </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <center>
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="lead p1" style="text-align: center;">
+                        Todavía no has creado ningún proyecto
+                    </p>
+                </div>
+            </div>
+        </center>
+        {{/each}}
+    </div>
 </div>
