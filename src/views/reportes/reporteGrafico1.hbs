@@ -2,6 +2,7 @@
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="body">
     <nav class="nav-extended" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
@@ -28,6 +29,7 @@
             </ul>
         </div>
     </nav>
+
     <div class="row" style="background-color: #F6D7A7;">
         {{#each proyectos}}
         <div class="col-md-3" style="margin:30px;">
@@ -40,11 +42,33 @@
                         <i class="p1">{{this.dataValues.namep}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
+                        <b class="p1">Presupuesto</b>
+                    </h6>
+                    <p>
+                        <i class="p1">{{this.dataValues.presupuesto}}</i>
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
                         <b class="p1">Anticipos</b>
                     </h6>
                     <p>
                         <i class="p1">{{this.dataValues.anticipo}}</i>
                     </p>
+                    <canvas id="Grafica" width="10" height="10" aria-label="Proyectos" role="img"></canvas>
+                    <script>
+    let grafica=document.getElementById("Grafica").getContext("2d");
+
+    var chart = new Chart(grafica,{
+        type:"bar",
+        data:{
+            labels:["Presupuesto", "Anticipos"],
+            datasets:[{
+                label:"proyecto",
+                backgroundColor:"rgb(0,0,0)",
+                data:[100,52]
+            }]
+        }
+    })
+</script>
                 </div>
             </div>
         </div>
