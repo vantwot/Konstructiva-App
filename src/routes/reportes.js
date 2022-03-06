@@ -15,7 +15,7 @@ router.get('/reportes/info-contratost', async (req,res) =>{
     res.render("reportes/reporteContratosT.hbs", { contratos });
 });
 
-router.get('/reportes/info-grafica1', async (req,res) =>{
+router.get('/reportes/info-grafica', async (req,res) =>{
     const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente, Contrato ]});
     res.render("reportes/reporteGrafico1.hbs", { proyectos });
 });
