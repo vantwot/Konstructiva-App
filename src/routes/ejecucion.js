@@ -61,6 +61,12 @@ router.get('/ejecucion/:id_contrato/asignar/:id', async (req, res) => {
                 id: req.params.id_contrato,
             }
         });
+
+        await proyecto.update({ anticipo: proyecto.anticipo - contrato.valor}, {
+            where: {
+                id: req.params.id,
+            }
+        });
         proyecto.setContratos(contrato);
         contrato.setProyecto(proyecto);
 
@@ -97,6 +103,7 @@ router.post('/ejecucion/editar-contratos/:id', async (req, res) => {
     }
     if (errors.length > 0) {
         res.render('ejecucion/editar-contratos', {
+            errors,
             contratos,
             numero,
             nombre,

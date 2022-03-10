@@ -12,7 +12,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
                 <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
-                <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:black;" href="/ejecucion/personalt">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
                 <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
@@ -21,15 +21,13 @@
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
                 <li class="tab">
-                    <a style="color:white;" href="/ejecucion/contratost">Lista de contratos temporales</a>
+                    <a style="color:black;" href="/personal/lista">Lista de personal</a>
                 </li>
                 <li class="tab">
-                    <a class="active" style="color:black;" href="/ejecucion/crear-contratost">
-                        Crear contrato
-                        temporal
+                    <a class="active" style="color:white;" href="/personal/add">
+                        Crear nuevo personal
                     </a>
                 </li>
-                <li class="tab"><a style="color:white;" href="/ejecucion/compra">Compras</a></li>
             </ul>
         </div>
     </nav>
@@ -47,46 +45,41 @@
         <div class="col-md-4 mx-auto">
             <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
                 <div class="card-header">
-                    <h3>Editar Contrato</h3>
+                    <h3>Editar Personal</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/ejecucion/editar-contratos/{{contratos.dataValues.id}}" method="POST">
+                    <form action="/personal/editar-personal/{{personal.dataValues.id}}" method="POST">
                         <input type="hidden" name="_method" value="PUT">
 
                         <div class="form-group " style="margin:10px;">
                             <label style="margin-left: 15px; margin-top:15px;">Numero</label>
                             <input type="number" style="margin-right:5px;" name="numero" class="form-control" autofocus
-                                   value="{{contratos.dataValues.numero}}" />
+                                   value="{{personal.dataValues.numero}}" />
                         </div>
 
                         <div class="form-group " style="margin:10px;">
                             <label style="margin-left: 15px; margin-top:15px;">Nombre</label>
                             <input type="text" style="margin-right:5px;" name="nombre" class="form-control" autofocus
-                                   value="{{contratos.dataValues.nombre}}" />
+                                   value="{{personal.dataValues.nombre}}" />
                         </div>
 
                         <div class="form-group " style="margin:10px;">
                             <label style="margin-left: 15px; margin-top:15px;">Cedula</label>
                             <input type="number" style="margin-right:5px;" name="cedula" class="form-control" autofocus
-                                   value="{{contratos.dataValues.cedula}}" />
+                                   value="{{personal.dataValues.cedula}}" />
                         </div>
 
                         <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Fecha de inicio del contrato</label>
-                            <input type="text" style="margin-right:5px;" name="fecha_inicio" class="datepicker form-control" autofocus
-                                   value="{{contratos.dataValues.fecha_inicio}}" />
+                            <label style="margin-left: 15px; margin-top:15px;">Profesion</label>
+                            <input type="text" style="margin-right:5px;" name="profesion" class="form-control" autofocus
+                                   value="{{personal.dataValues.profesion}}" />
                         </div>
 
-                        <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Fecha de fin del contrato</label>
-                            <input type="text" style="margin-right:5px;" name="fecha_fin" class="datepicker form-control" autofocus
-                                   value="{{contratos.dataValues.fecha_fin}}" />
-                        </div>
 
                         <div class="form-group " style="margin:10px;">
                             <label style="margin-left: 15px; margin-top:15px;">Valor</label>
                             <input type="number" style="margin-right:5px;" name="valor" class="form-control" autofocus
-                                   value="{{contratos.dataValues.valor}}" />
+                                   value="{{personal.dataValues.valor}}" />
                         </div>
 
 
