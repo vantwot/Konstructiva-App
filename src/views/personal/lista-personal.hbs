@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<div class="body">
+    <nav class="nav-extended" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
+                <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
+                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
+
+</ul>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab">
+                    <a style="color:black;" href="/personal/lista">Lista de personal</a>
+                </li>
+                <li class="tab">
+                    <a class="active" style="color:white;" href="/personal/add">
+                        Crear nuevo personal
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row" style="background-color: #F6D7A7;">
+        {{#each personal}}
+        <div class="col-md-3" style="margin:30px;">
+            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Numero del contrato :
+                    </h6>
+                    <p>
+                        {{this.dataValues.numero}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Nombre del personal :
+                    </h6>
+                    <p>
+                        {{this.dataValues.nombre}}
+                    </p>
+                    <p>
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Cedula :
+                    </h6>
+                    <p>
+                        {{this.dataValues.cedula}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Profesion :
+                    </h6>
+                    <p>
+                        {{this.dataValues.profesion}}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Valor :
+                    </h6>
+                    <p>
+                        {{this.dataValues.valor}}
+                    </p>
+
+                    <h6 class="card-subtitle mb-2 text-muted" style="color: black;">
+                        Proyecto Asignado:
+                    </h6>
+
+                    <p>
+                        {{#if this.dataValues.proyecto}}
+                        {{this.dataValues.proyecto.dataValues.namep}}
+                        {{else}}
+                        <b style="color:#2E7373 ;">No hay un proyecto asignado</b>
+                        {{/if}}
+                    </p>
+
+                    <center>
+                        <a href="/personal/modificar/{{this.dataValues.id}}" style="color:black" class="btn btn-brown btn-lg" type="submit">
+                            Editar
+                        </a>
+                    </center>
+                    <center>
+                        <form action="/personal/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
+                                    class="btn btn-brown1 btn-block" type="submit">
+                                Eliminar
+                            </button>
+                        </form>
+                    </center>
+                    <center>
+                        <p>
+                            {{#if this.dataValues.proyecto}}
+                            {{else}}
+                            <a href="/personal/{{this.dataValues.id}}/asignar" class="btn btn-brown btn-lg" type="submit">
+                                Asignar Proyecto
+                            </a>
+                            {{/if}}
+                        </p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <p class="lead" style="text-align: center;">
+                        Todavía no has creado un personal
+                    </p>
+                    <a href="/personal/add" class="btn btn-or btn-block">
+                        Crear un personal
+                    </a>
+                </div>
+            </div>
+    </div>
+        
+    {{/each}}
+</div>

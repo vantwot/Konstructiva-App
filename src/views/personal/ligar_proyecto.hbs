@@ -12,22 +12,20 @@
                 <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
                 <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
-                <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <li><a style="color:white;" href="collapsible.html">Reporte</a></li>
                 <a href="/login" class="btn btn-red">Cerrar sesión </a>
             </ul>
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
                 <li class="tab">
-                    <a style="color:white;" href="/ejecucion/contratost">Lista de contratos temporales</a>
+                    <a style="color:black;" href="/personal/lista">Lista de personal</a>
                 </li>
                 <li class="tab">
-                    <a class="active" style="color:black;" href="/ejecucion/crear-contratost">
-                        Crear contrato
-                        temporal
+                    <a class="active" style="color:white;" href="/personal/add">
+                        Crear nuevo personal
                     </a>
                 </li>
-                <li class="tab"><a style="color:white;" href="/ejecucion/compra">Compras</a></li>
             </ul>
         </div>
     </nav>
@@ -84,7 +82,7 @@
                     </p>
 
                     <center>
-                        <a href="/ejecucion/{{../id_contrato}}/asignar/{{this.dataValues.id}}" style="color: black;" class="btn btn-brown2 btn-lg"
+                        <a href="/personal/{{../id_personal}}/asignar/{{this.dataValues.id}}" style="color: black;" class="btn btn-brown2 btn-lg"
                            type="submit">
                             Asignar
                         </a>
