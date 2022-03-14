@@ -48,6 +48,13 @@
                         <p>
                             {{this.dataValues.anticipo}}
                         </p>
+                        <p>
+                            {{#if this.dataValues.facturas}}
+                            {{this.dataValues.facturas.dataValues.Link}}
+                            {{else}}
+                            No hay un proyecto asignado
+                            {{/if}}
+                        </p>
                         <center>
                             <form action="/ejecucion/subirArchivo/{{this.dataValues.id}}" method="POST"
                                 enctype="multipart/form-data">

@@ -111,7 +111,7 @@ router.post('/ejecucion/nuevo-contratost', async (req, res) => {
     
 });
 router.get('/ejecucion/compra', async(req, res) => {
-    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: Factura });
     res.render("ejecucion/compras", {proyectos});
 });
 
