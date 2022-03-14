@@ -5,8 +5,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
             <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -15,10 +15,10 @@
                 <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a>
             </ul>
         </div>
-        <div class="nav-content">
+        <div class="nav-content p1">
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a style="color:white;" href="/proyecto/lista">Lista de proyectos</a></li>
                 <li class="tab"><a style="color:black;" href="/proyecto/add">Crear</a></li>
@@ -35,37 +35,37 @@
     </div>
     {{/each}}
 
-    <div class="caja">
+    <div class="caja p1">
         <form action="/proyecto/nuevo" method="POST">
-            <h5 style="color:black; margin-left:15px; margin-top:25px;"> <b>Detalles</b></h5>
+            <h5 class="p1"style="color:black; margin-left:15px; margin-top:25px;"> <b>Detalles</b></h5>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b><i>Nombre</i></b></label>
+                <label class="p1"style="margin-left: 15px; margin-top:15px; color:black"><b><i>Nombre</i></b></label>
                 <input type="text" style="color:black;margin-right:5px;" name="namep" class="form-control" autofocus />
             </div>
             <div class="form-grop" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;"><b><i>Fecha de incio</i></b></label>
+                <label class="p1"style="color:black;margin-left: 15px; margin-top:15px;"><b><i>Fecha de incio</i></b></label>
                 <input type="text" style="margin-right:5px;" class="datepicker form-control" name="fecha_inicio">
             </div>
             <div class="form-group" style="margin:10px;">
-                <label style="color:black; margin-left: 15px; margin-top:15px"><b><i>Fecha de finalización</i></b></label>
+                <label class="p1"style="color:black; margin-left: 15px; margin-top:15px"><b><i>Fecha de finalización</i></b></label>
                 <input type="text" style="margin-right:5px;" class="datepicker form-control" name="fecha_fin">
             </div>
 
-            <h5 style="color: black; margin-left:15px; margin-top:25px;"><b>Presupuesto</b></h5>
+            <h5 class="p1"style="color: black; margin-left:15px; margin-top:25px;"><b>Presupuesto</b></h5>
             <div class="row form-group">
                 <div class="form-group col s6" style="margin:10px;">
-                    <label style="color:black" for="nombre-requerimiento"><i>Nombre del itém</i></label>
+                    <label class="p1"style="color:black" for="nombre-requerimiento"><i>Nombre del itém</i></label>
                     <input id="nombre-requerimiento" type="text" name="nombre">
                 </div>
                 <div class="form-group col s6" style="margin:10px;">
-                    <label style="color:black" for="valor-requerimiento"><i>Valor del itém</i></label>
+                    <label class="p1"style="color:black" for="valor-requerimiento"><i>Valor del itém</i></label>
                     <input id="valor-requerimiento" type="number" name="valor">
                 </div>
 
                 <div class="form-group col-auto">
                     <button id="agregar-btn" style="color:black;   display: block; margin-top:30px; margin-right:20px;"
-                        class="btn btn-brown1 btn-block">
-                        <b>Agregar item</b>
+                        class="btn btn-brown1 p1">
+                        <b>Agregar ítem</b>
                     </button>
                 </div>
             </div>
@@ -74,16 +74,16 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Valor</th>
-                            <th>Acción</th>
+                            <th class="p1">Nombre del ítem</th>
+                            <th class="p1">Valor</th>
+                            <th class="p1">Acción</th>
                         </tr>
                     </thead>
                     <tbody id="tabla-presupuesto">
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="1"> <i>Total</i></th>
+                            <th class="p1" colspan="1"> <i>Total</i></th>
                             <td id="total-value">0</td>
                         </tr>
                     </tfoot>
@@ -91,9 +91,9 @@
             </div>
             <div id="hidden-inputs"></div>
             <div class="form-group">
-                <button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                <button style="color:black; block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
                     class="btn btn-brown2 btn-block" type="submit">
-                    <b>Crear proyecto</b>
+                    <b class="p1">Crear proyecto</b>
                 </button>
             </div>
         </form>
@@ -132,7 +132,7 @@
                 valor = $('#valor-requerimiento');
                 requerimientos.push({ nombre: nombre.val(), valor: valor.val() })
                 tabla = $('#tabla-presupuesto');
-                newHtml = `<tr><td>${nombre.val()}</td><td>${valor.val()}</td><td><button class="eliminar-btn btn btn-brown2">Eliminar</button></td></tr>`
+                newHtml = `<tr><td>${nombre.val()}</td><td>${valor.val()}</td><td><button style="color:black;"class="eliminar-btn btn btn-brown p1">Eliminar</button></td></tr>`
                 tabla.append(newHtml);
                 actualizar_total();
 

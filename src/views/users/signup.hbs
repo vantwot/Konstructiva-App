@@ -17,45 +17,49 @@
 <div class="body">
     <nav class="nav-extended" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo p1" style="margin-left: 20px; color:black;">Konstructiva app</a>
+            <a href="#" class=" brand-logo p1" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
         </div>
     </nav>
     <div class="caja">
         <form action="/api/auth/signup" method="POST">
             <h5 style="color:black; margin-left:15px; margin-top:25px;"> <b class="p1">Registrar usuario</b></h5>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b class="p1"><i>Nombre de usuario</i></b></label>
+                <label style="margin-left: 15px; margin-top:15px; color:black"><b class="p1"><i>Nombre de
+                            usuario</i></b></label>
                 <input onkeypress="return /[a-z]/i.test(event.key)" style="background-color:#F6EABE; margin-right:5px;"
                     class="form-control" name="username" required autofocus />
             </div>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b class="p1"><i>Correo electrónico</i></b></label>
+                <label style="margin-left: 15px; margin-top:15px; color:black"><b class="p1"><i>Correo
+                            electrónico</i></b></label>
                 <input type="text" style="margin-right:5px;" class="form-control" name="email" required />
             </div>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b class="p1"><i>Contraseña</i></b></label>
+                <label style="margin-left: 15px; margin-top:15px; color:black"><b
+                        class="p1"><i>Contraseña</i></b></label>
                 <input type="text" style="margin-right:5px;" class="form-control" name="password" required />
             </div>
             <div class="form-group" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;"><b class="p1">Rol</b></label>
-                <select class="form-select form-select-sm p1" name="role" required>
-                    <option selected> </option>
-                    <option>administrador</option>
-                    <option>compras</option>
-                    <option>contador</option>
+                <label style="color:black;margin-left: 15px; margin-top:15px;"><b
+                        class="p1">Rol</b></label>
+                <select style="background:#F6D7A7; border: solid 1px #F6EABE" class="form-select form-select-sm p1" name="role" required>
+                    <option style="background:#F6EABE;" selected> </option>
+                    <option style="background:#F6EABE;">administrador</option>
+                    <option style="background:#F6EABE;">compras</option>
+                    <option style="background:#F6EABE;">contador</option>
                 </select>
             </div>
 
             <div id="hidden-inputs"></div>
             <div class="form-group">
-                <button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                    class="btn btn-brown2 btn-block" type="submit">
+                <button style="color:black; block; margin:  auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown2 btn-block p1" type="submit">
                     <b>Crear usuario</b>
                 </button>
-                <button onclick="location.href='/login'" style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                <a href="/login" style="color:black;display: block; margin: 40%; margin-top:30px; margin-bottom:25px;"
                     class="btn btn-brown btn-block" type="submit">
                     <b class="p1">Iniciar sesión</b>
-                </button>
+                </a>
             </div>
         </form>
     </div>

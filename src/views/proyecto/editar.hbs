@@ -7,19 +7,19 @@
 <div class="body">
     <nav class="nav-extended" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" class=" brand-logo p1" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger p1"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a style="color:black;" href="/proyecto/lista">Proyectos</a></li>
-                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
-                <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
-                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
-                <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <li><a class="p1" style="color:black;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a class="p1" style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a class="p1" style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a class="p1" style="color:white;" href="collapsible.html">Personal</a></li>
+                <li><a class="p1" style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <a href="/login" class="btn btn-red p1"> <b>Cerrar sesión</b> </a>
             </ul>
         </div>
         <div class="nav-content">
-            <ul class="tabs tabs-transparent">
+            <ul class="tabs tabs-transparent p1">
                 <li class="tab"><a style="color:white;" href="/proyecto/lista">Lista de proyectos</a></li>
                 <li class="tab"><a class="active" style="color:white;" href="/proyecto/add">Crear</a></li>
                 <li class="tab disabled"><a href="/proyecto/modificar/:id" style="color: black;">Modificar</a></li>
@@ -36,21 +36,21 @@
     </div>
     {{/each}}
 
-    <div class="caja">
+    <div class="caja p1">
         <form action="/proyecto/editar/{{proyectos.dataValues.id}}" method="POST">
-            <h5 style="color:black; margin-left:15px; margin-top:25px;"> <b>Editar proyecto</b></h5>
+            <h5 class="p1" style="color:black; margin-left:15px; margin-top:25px;"> <b>Editar proyecto</b></h5>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b><i>Nombre</i></b></label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:rgba(8, 7, 7, 0.993)"><b><i>Nombre</i></b></label>
                 <input type="text" style="margin-right:5px;" name="namep" class="form-control"
                     value="{{proyectos.dataValues.namep}}" autofocus />
             </div>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b><i>Fecha de inicio</i></b></label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Fecha de inicio</i></b></label>
                 <input type="text" style="margin-right:5px;" class="datepicker form-control" name="fecha_inicio"
                     value="{{proyectos.dataValues.fecha_inicio}}" />
             </div>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black"><b><i>Fecha de
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Fecha de
                             finalización</i></b></label>
                 <input type="text" style="margin-right:5px;" class="datepicker form-control" name="fecha_fin"
                     value="{{proyectos.dataValues.fecha_fin}}" />
@@ -58,7 +58,7 @@
 
             <div class="form-group">
                 <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                    class="btn btn-brown2 btn-block" type="submit">
+                    class="btn btn-brown2 btn-block p1" type="submit">
                     <b>Editar</b>
                 </button>
             </div>

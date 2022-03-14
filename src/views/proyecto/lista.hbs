@@ -5,14 +5,15 @@
 <div class="body">
     <nav class="nav-extended" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b class="p1">Konstructiva app</b></a>
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b class="p1">Konstructiva
+                    app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="p1"style="color:black;" href="/proyecto/lista">Proyectos</a></li>
-                <li><a class="p1"style="color:white;" href="/cliente/lista">Clientes</a></li>
-                <li><a class="p1"style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
-                <li><a class="p1"style="color:white;" href="collapsible.html">Personal</a></li>
-               <li><a class="p1"style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <li><a class="p1" style="color:black;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a class="p1" style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a class="p1" style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a class="p1" style="color:white;" href="collapsible.html">Personal</a></li>
+                <li><a class="p1" style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
                 <a href="/login" class="btn btn-red p1">Cerrar sesión </a>
 
             </ul>
@@ -37,7 +38,7 @@
                         <i class="p1">{{this.dataValues.namep}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b class="p1">Nombre Cliente</b> 
+                        <b class="p1">Nombre Cliente</b>
                     </h6>
                     <p>
                         {{#if this.dataValues.cliente}}
@@ -46,54 +47,53 @@
                         <i class="p1">No hay ningún cliente asignado</i>
                         {{/if}}
                     </p>
-
-                    <!-- ARREGLAR -->
+                    <!-- ARREGLAR
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b class="p1">Contrato Temporal</b> 
+                        <b class="p1">Contrato Temporal</b>
                     </h6>
                     <p>
                         {{#if this.dataValues.contratos}}
-                        <i class="p1"{{this.dataValues.contratos.dataValues.nombre}}</i>
-                        {{else}}
-                        <i class="p1">No hay ningún contrato asignado</i>
-                        {{/if}}
-                    </p>
-
+                        <i class="p1" {{this.dataValues.contratos.dataValues.nombre}}</i>
+                            {{else}}
+                            <i class="p1">No hay ningún contrato asignado</i>
+                            {{/if}}
+                    </p> -->
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b class="p1">Fecha de incio</b> 
+                        <b class="p1">Fecha de incio</b>
                     </h6>
                     <p>
                         <i>{{this.dataValues.fecha_inicio}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        <b class="p1">Fecha de finalización</b> 
+                        <b class="p1">Fecha de finalización</b>
                     </h6>
                     <p>
                         <i class="p1">{{this.dataValues.fecha_fin}}</i>
                     </p>
                     <center>
-                        <a href="/proyecto/modificar/{{this.dataValues.id}}" style="color:black"
-                            class="btn btn-brown btn-lg" type="submit">
+                        <button onclick="window.location.href='/proyecto/modificar/{{this.dataValues.id}}'"
+                            style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:14px;width:120px; height:38px"
+                            class="btn btn-brown1" type="submit">
                             <b class="p1">Editar</b>
-                        </a>
+                        </button>
                     </center>
                     <center>
                         <form action="/proyecto/eliminar/{{this.dataValues.id}}?_method=DELETE" method="POST">
                             <input type="hidden" name="_method" value="DELETE">
                             <button
-                                style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
-                                class="btn btn-brown1 btn-block" type="submit">
+                                style="color:black; display: block; margin: 0 auto; margin-top:15px;margin-bottom:14px;width:120px; height:38px"
+                                class="btn btn-brown2 btn-block" type="submit">
                                 <b class="p1">Eliminar</b>
                             </button>
                         </form>
                     </center>
                     <center>
                         <form action="/proyecto/anticipos/{{this.dataValues.id}}">
-                            <button
-                                style="color:black;display: block; margin: 0 auto; margin-top:15px; margin-bottom:25px;"
-                                class="btn btn-brown2 btn-block;" type="submit">
+                            <button style="color:black; display: block; margin: 0 auto; margin-bottom:10px;width:120px; height:38px"
+                                class="btn btn-brown btn-block" type="submit">
                                 <b class="p1">Anticipos</b>
                             </button>
+                        </form>
                     </center>
                 </div>
             </div>
