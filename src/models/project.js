@@ -29,17 +29,13 @@ Cliente.belongsTo(Proyecto)
 Proyecto.hasMany(Anticipo)
 Anticipo.belongsTo(Proyecto)
 
-Proyecto.hasMany(Requerimiento)
-Requerimiento.belongsTo(Proyecto)
-
-Proyecto.hasMany(Contrato)
-Contrato.belongsTo(Proyecto)
+Proyecto.hasMany(Contrato, {foreignKey:'proyectoId'})
+Contrato.belongsTo(Proyecto, {foreignKey:'proyectoId'})
 
 Proyecto.hasMany(Material)
 Material.belongsTo(Proyecto)
 
 Proyecto.hasMany(Personal)
-Personal.belongsTo(Proyecto)
 
 Proyecto.hasMany(Factura)
 Factura.belongsTo(Proyecto)
