@@ -5,9 +5,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -15,10 +15,10 @@
                 <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <a href="/login" class="btn btn-red"><b>Cerrar sesión</b></a>
             </ul>
         </div>
-        <div class="nav-content">
+        <div class="nav-content p1">
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a style="color:white;" href="/cliente/lista">Lista de clientes</a></li>
                 <li class="tab"><a class="active" style="color:black;" href="/cliente/add">Crear</a></li>
@@ -36,18 +36,20 @@
 
     <div class="caja">
         <form action="/cliente/nuevo" method="POST">
-        <div class="form-group" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;">Nombre</label>
-                <input onkeypress="return /[a-z]/i.test(event.key)" style="background-color:#F6EABE; margin-right:5px;" class="form-control" name="nombre">
+            <h5 class="p1" style="color:black; margin-left:15px; margin-top:25px;"> <b>Detalles</b></h5>
+            <div class="form-group" style="margin:10px;">
+                <label class="p1"style="color:black;margin-left: 15px; margin-top:15px;"><b>Nombre</b></label>
+                <input onkeypress="return /[a-z]/i.test(event.key)" style="background-color:#F6EABE; margin-right:5px;"
+                    class="form-control" name="nombre">
             </div>
             <div class="form-group" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;">Cedula</label>
+                <label class="p1" style="color:black;margin-left: 15px; margin-top:15px;"><b>Cédula</b></label>
                 <input type="number" style="margin-right:5px;" class="form-control" name="cedula">
             </div>
             <div class="form-group">
                 <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
                     class="btn btn-brown2 btn-block" type="submit">
-                    Crear
+                    <b class="p1">Crear</b>
                 </button>
         </form>
     </div>

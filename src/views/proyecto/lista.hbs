@@ -89,7 +89,8 @@
                     </center>
                     <center>
                         <form action="/proyecto/anticipos/{{this.dataValues.id}}">
-                            <button style="color:black; display: block; margin: 0 auto; margin-bottom:10px;width:120px; height:38px"
+                            <button
+                                style="color:black; display: block; margin: 0 auto; margin-bottom:10px;width:120px; height:38px"
                                 class="btn btn-brown btn-block" type="submit">
                                 <b class="p1">Anticipos</b>
                             </button>
@@ -103,14 +104,14 @@
             <div class="card mx-auto">
                 <div class="card-body">
                     <p class="lead p1" style="text-align: center;">
-                        Todavía no has creado un proyecto
+                        Todavía no has registrado un proyecto
                     </p>
-                    <a href="/proyecto/add" class="p1 btn btn-or btn-block">
-                        Crear un proyecto
+                    <a href="/proyecto/add" style="color:black" class="p1 btn btn-brown2 btn-block">
+                        <b>Crear un proyecto</b>
                     </a>
                 </div>
             </div>
     </div>
-    </center>
-    {{/each}}
+</div>
+{{/each}}
 </div>

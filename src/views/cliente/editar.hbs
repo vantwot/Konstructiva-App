@@ -5,17 +5,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
-                <li><a style="color:black;" href="/cliente/lista">Clientes</a></li>
-                <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
-                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
-                <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <li><a class="p1" style="color:white;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a class="p1" style="color:black;" href="/cliente/lista">Clientes</a></li>
+                <li><a class="p1" style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a class="p1" style="color:white;" href="collapsible.html">Personal</a></li>
+                <li><a class="p1" style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <a href="/login" class="btn btn-red p1"><b>Cerrar sesión</b> </a>
             </ul>
         </div>
         <div class="nav-content">
@@ -36,34 +36,26 @@
     </div>
     {{/each}}
 
-    <div class="row" style="background-color: #F6D7A7;">
-        <div class="col-md-4 mx-auto">
-            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
-                <div class="card-header">
-                    <h3>Editar Cliente</h3>
-                </div>
-                <div class="card-body">
-                    <form action="/cliente/editar/{{clientes.dataValues.id}}" method="POST">
-                        <input type="hidden" name="_method" value="PUT">
-                        <div class="form-group " style="margin:10px;">
-                            <label style="color:black;  margin-left: 15px; margin-top:15px;">Nombre</label>
-                            <input onkeypress="return /[a-z]/i.test(event.key)" type="text" style="margin-right:5px;" name="nombre" class="form-control" autofocus
-                                value="{{clientes.dataValues.nombre}}" />
-                        </div>
-                        <div class="form-group" style="margin:10px;">
-                            <label style="color:black;  margin-left: 15px; margin-top:15px;">Cédula</label>
-                            <input type="number" style="margin-right:5px;" class="form-control" name="cedula"
-                                value="{{clientes.dataValues.cedula}}">
-                        </div>
-                        <div class="form-group">
-                            <button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                                class="btn btn-brown2 btn-block" type="submit">
-                                Editar
-                            </button>
-                        </div>
-                    </form>
-                </div>
+    <div class="caja p1">
+        <form action="/cliente/editar/{{clientes.dataValues.id}}" method="POST">
+            <h5 class="p1" style="color:black; margin-left:15px; margin-top:25px;"> <b>Editar cliente</b></h5>
+            <div class="form-group " style="margin:10px;">
+                <label class="p1" style="color:black;  margin-left: 15px; margin-top:15px;"><i><b>Nombre</b></i></label>
+                <input onkeypress="return /[a-z]/i.test(event.key)" type="text" style="margin-right:5px;" name="nombre"
+                    class="form-control" autofocus value="{{clientes.dataValues.nombre}}" />
             </div>
-        </div>
+            <div class="form-group" style="margin:10px;">
+                <label class="p1" style="color:black;  margin-left: 15px; margin-top:15px;"><i><b>Cédula</b></i></label>
+                <input type="number" style="margin-right:5px;" class="form-control" name="cedula"
+                    value="{{clientes.dataValues.cedula}}">
+            </div>
+            <div class="form-group">
+                <button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown2 btn-block" type="submit">
+                    <b class="p1" style="color:black">Editar</b>
+                </button>
+            </div>
+        </form>
     </div>
+    </form>
 </div>
