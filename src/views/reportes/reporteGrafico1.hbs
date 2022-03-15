@@ -4,9 +4,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -14,7 +14,7 @@
                 <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:black;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a>
 
             </ul>
         </div>
@@ -22,8 +22,6 @@
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a style="color:white;" href="/reportes/info-proyectos">Información de proyectos</a>
                 </li>
-                <li class="tab"><a class="active" style="color:white;" href="/reportes/info-contratost">Información de
-                        contratos temporales</a></li>
                 <li class="tab"><a style="color:black;" href="/reportes/info-grafica">Información Gráfica</a>
                 </li>
             </ul>
@@ -50,47 +48,42 @@
         {{#each proyectos}}
         <script>
             nuevaLongitud1 = nombres.push("{{this.dataValues.namep}}");
-            nuevaLongitud = valores.push({{this.dataValues.presupuesto}});
+            nuevaLongitud = valores.push({{ this.dataValues.presupuesto }});
         </script>
         {{else}}
         <center>
             <div class="card mx-auto">
                 <div class="card-body">
                     <p class="lead p1" style="text-align: center;">
-                        Todavía no has creado ningún proyecto
+                        Todavía no has registrado un proyecto
                     </p>
+                    <a href="/proyecto/add" style="color:black" class="p1 btn btn-brown2 btn-block">
+                        <b>Crear un proyecto</b>
+                    </a>
                 </div>
             </div>
         </center>
         {{/each}}
         <script>
-            let grafica=document.getElementById("Grafica").getContext("2d");
-            var chart = new Chart(grafica,{
-                type:"pie",
-                data:{
+            let grafica = document.getElementById("Grafica").getContext("2d");
+            var chart = new Chart(grafica, {
+                type: "pie",
+                data: {
                     labels: nombres,
-                    datasets:[{
-                        label:"Total presupuestos",
+                    datasets: [{
+                        label: "Total presupuestos",
                         data: valores,
                         backgroundColor: [
-                            'rgba(22, 160, 133, 0.2)',
-                            'rgba(231, 76, 60, 0.2)',
-                            'rgba(175, 122, 197, 0.2)',
-                            'rgba(244, 208, 63, 0.2)',
-                            'rgba(84, 153, 199, 0.2)',
-                            'rgba(192, 57, 43, 0.2)',
-                            'rgba(142, 68, 173, 0.2)'
+                            'rgba(192,64,0)',
+                            'rgba(95,63,62)',
+                            'rgba(142,55,46)',
+                            'rgba(130,58,63)',
+                            'rgba(203,109,81)'
                         ],
                         borderColor: [
-                            'rgba(22, 160, 133, 1)',
-                            'rgba(231, 76, 60, 1)',
-                            'rgba(175, 122, 197, 1)',
-                            'rgba(244, 208, 63, 1)',
-                            'rgba(84, 153, 199, 1)',
-                            'rgba(192, 57, 43, 1)',
-                            'rgba(142, 68, 173, 1)'
+                           'color:black'
                         ],
-                        borderWidth: 1
+                        borderWidth: 4
                     }]
                 }
             });
@@ -114,37 +107,29 @@
         {{#each proyectos}}
         <script>
             nuevaLongitud2 = nombresp.push("{{this.dataValues.namep}}");
-            nuevaLongitud3 = anticipos.push({{this.dataValues.anticipo}});
+            nuevaLongitud3 = anticipos.push({{ this.dataValues.anticipo }});
         </script>
         {{/each}}
         <script>
-            let grafica1=document.getElementById("Grafica1").getContext("2d");
-            var chart = new Chart(grafica1,{
-                type:"doughnut",
-                data:{
+            let grafica1 = document.getElementById("Grafica1").getContext("2d");
+            var chart = new Chart(grafica1, {
+                type: "doughnut",
+                data: {
                     labels: nombresp,
-                    datasets:[{
-                        label:"Anticipos por proyecto",
+                    datasets: [{
+                        label: "Anticipos por proyecto",
                         data: anticipos,
                         backgroundColor: [
-                            'rgba(22, 160, 133, 0.2)',
-                            'rgba(231, 76, 60, 0.2)',
-                            'rgba(175, 122, 197, 0.2)',
-                            'rgba(244, 208, 63, 0.2)',
-                            'rgba(84, 153, 199, 0.2)',
-                            'rgba(192, 57, 43, 0.2)',
-                            'rgba(142, 68, 173, 0.2)'
+                            'rgba(144	0	32)',
+                            'rgba(137	30	53)',
+                            'rgba(203	29	17)',
+                            'rgba(200	16	35)',
+                            'rgba(189	0	47)'
                         ],
                         borderColor: [
-                            'rgba(22, 160, 133, 1)',
-                            'rgba(231, 76, 60, 1)',
-                            'rgba(175, 122, 197, 1)',
-                            'rgba(244, 208, 63, 1)',
-                            'rgba(84, 153, 199, 1)',
-                            'rgba(192, 57, 43, 1)',
-                            'rgba(142, 68, 173, 1)'
+                            'color:black'
                         ],
-                        borderWidth: 1
+                        borderWidth: 4
                     }]
                 }
             });
@@ -159,7 +144,7 @@
             <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted" style="text-align: center;">
-                        <b class="p1">Proyectos con más margen de ganacia</b>
+                        <b class="p1">Margen de ganacia</b>
                     </h6>
                     <canvas id="Grafica2" width="1" height="1" aria-label="Proyectos" role="img"></canvas>
                 </div>
@@ -168,37 +153,29 @@
         {{#each proyectos}}
         <script>
             nuevaLongitud4 = nombrespr.push("{{this.dataValues.namep}}");
-            nuevaLongitud5 = margen.push((({{this.dataValues.presupuesto}} - {{this.dataValues.anticipo}}) / {{this.dataValues.presupuesto}}) * 100);
+            nuevaLongitud5 = margen.push((({{ this.dataValues.presupuesto }} - {{ this.dataValues.anticipo }}) / {{ this.dataValues.presupuesto }}) * 100);
         </script>
         {{/each}}
         <script>
-            let grafica2=document.getElementById("Grafica2").getContext("2d");
-            var chart = new Chart(grafica2,{
-                type:"bar",
-                data:{
+            let grafica2 = document.getElementById("Grafica2").getContext("2d");
+            var chart = new Chart(grafica2, {
+                type: "bar",
+                data: {
                     labels: nombrespr,
-                    datasets:[{
-                        label:"Margen neto",
+                    datasets: [{
+                        label: "Margen neto",
                         data: margen,
                         backgroundColor: [
-                            'rgba(22, 160, 133, 0.2)',
-                            'rgba(231, 76, 60, 0.2)',
-                            'rgba(175, 122, 197, 0.2)',
-                            'rgba(244, 208, 63, 0.2)',
-                            'rgba(84, 153, 199, 0.2)',
-                            'rgba(192, 57, 43, 0.2)',
-                            'rgba(142, 68, 173, 0.2)'
+                            'rgba(250	128	114)',
+                            'rgba(249	143	29)',
+                            'rgba(217	147	67)',
+                            'rgba(196	98	16)',
+                            'rgba(237	170	124)'
                         ],
                         borderColor: [
-                            'rgba(22, 160, 133, 1)',
-                            'rgba(231, 76, 60, 1)',
-                            'rgba(175, 122, 197, 1)',
-                            'rgba(244, 208, 63, 1)',
-                            'rgba(84, 153, 199, 1)',
-                            'rgba(192, 57, 43, 1)',
-                            'rgba(142, 68, 173, 1)'
+                            'color:black'
                         ],
-                        borderWidth: 1
+                        borderWidth: 4
                     }]
                 }
             });
