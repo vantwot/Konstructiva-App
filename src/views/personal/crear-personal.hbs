@@ -11,9 +11,9 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
                 <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
-                <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
-                <li><a style="color:white;" href="collapsible.html">Personal</a></li>
-                <li><a style="color:white;" href="collapsible.html">Reportes</a></li>
+                <li><a style="color:rgb(255, 255, 255);" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:rgb(0, 0, 0);" href="/personal/lista">Personal</a></li>
+                <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
                 <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
 
             </ul>
@@ -59,9 +59,17 @@
                 <input type="number" style="color:black;margin-right:5px;" name="cedula" class="form-control" />
             </div>
             <div class="form-group" style="margin:10px;">
-                <label style="color:black; margin-left: 15px; margin-top:15px">Profesion</label>
-                <input type="text" style="margin-right:5px;" class="form-control" name="profesion">
-            </div>
+                <label style="color:black;margin-left: 15px; margin-top:15px;"><b
+                        class="p1">Profesion</b></label>
+                <select style="background:#F6D7A7; border: solid 1px #F6EABE" class="form-select form-select-sm p1" name="profesion" required>
+                    <option style="background:#F6EABE;" selected> </option>
+                    <option style="background:#F6EABE;">Arquitecto</option>
+                    <option style="background:#F6EABE;">Diseñador</option>
+                    <option style="background:#F6EABE;">Tecnico</option>
+                    <option style="background:#F6EABE;">Constructor</option>
+                    <option style="background:#F6EABE;">Transportador</option>
+                </select>
+            </div>           
 
             <div class="form-group col s5" style="margin:10px;">
                 <label style="margin-left: 15px; margin-top:15px; color:black">Valor</label>

@@ -166,6 +166,11 @@ router.get('/ejecucion/compra', async(req, res) => {
     res.render("ejecucion/compras", {proyectos});
 });
 
+router.get('/user/compras', async (req,res) =>{
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente ]});
+    res.render("users/vistaCompras", {proyectos});
+});
+
 router.post('/ejecucion/subirArchivo/:id', async (req,res) => {
     //const facturas = await Factura.findByPk(req.params.id);
     const {link}=req.body;

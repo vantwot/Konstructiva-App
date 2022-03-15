@@ -36,6 +36,7 @@ Proyecto.hasMany(Material)
 Material.belongsTo(Proyecto)
 
 Proyecto.hasMany(Personal)
+Personal.belongsTo(Proyecto)
 
 Proyecto.hasMany(Factura)
 Factura.belongsTo(Proyecto)

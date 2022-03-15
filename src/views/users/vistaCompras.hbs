@@ -1,33 +1,76 @@
-<!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            </ul>
-        </div>
-        <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-            </ul>
-        </div>
-    </nav>
+  <nav class="nav-extended" style="background-color:#87AAAA; ">
+    <div class="nav-wrapper">
+      <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a style="color:rgb(0, 0, 0);" href="/ejecucion/contratost">Ejecucion</a></li>
+        <a href="/login" class="btn btn-red">Cerrar sesión </a>
 
-
-    <div class="row" style="background-color: #F6D7A7;">
-        <div class="col-md-4 mx-auto">
-            <center>
-                <h6>
-                    Pesta�a Compras : 
-                </h6>
-
-            </center>       
-
-        </div>
+      </ul>
     </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a style="color:black;" href="/proyecto/compra">Compras</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row" style="background-color: #F6D7A7;">
+    {{#each proyectos}}
+    <div class="col-md-3" style="margin:30px;">
+      <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">
+            Nombre Proyecto :
+          </h6>
+          <p>
+            {{this.dataValues.namep}}
+          </p>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Anticipos :
+          </h6>
+          <p>
+            {{this.dataValues.anticipo}}
+          </p>
+          <center>
+            <form action="/proyecto/subirArchivo/{{this.dataValues.id}}" method="POST" enctype="multipart/form-data">
+              <div>
+                <!-- <label style="color:black" for="subirPdf">Subir facturas</label>
+                          <input type="file" name="subirPdf" id="subirPdf">
+                          <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                          class="btn btn-brown2 btn-block" type="submit">
+                          Guardar factura
+                    </button>
+                     -->
+                <div class="form-group col s6" style="margin:25px;">
+                  <label style="color:black;margin-left: 15px; margin-top:15px;">link</label>
+                  <input type="text" style="margin-right:5px;" class="form-control" name="link">
+                  <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown2 btn-block" type="submit">
+                    Guardar factura
+                  </button>
+
+                </div>
+              </div>
+            </form>
+          </center>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <center>
+      <div class="card mx-auto">
+        <div class="card-body">
+          <p class="lead" style="text-align: center;">
+            Todavía no has creado un proyecto
+          </p>
+        </div>
+      </div>
+  </div>
+  </center>
+  {{/each}}
 </div>

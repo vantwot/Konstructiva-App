@@ -7,36 +7,37 @@
 <div class="body">
     <nav class="nav-extended" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app </a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            </ul>
-        </div>
-        <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-            </ul>
+            <a href="#" class=" brand-logo" </a>
         </div>
     </nav>
+<div class="p1">
 
-    <div class="row" style="background-color: #F6D7A7;">
-        <div class="col-md-4 mx-auto">
+    
+</div>
+    <div class="caja">
+        <form action="/api/auth/signup" method="POST">
             <center>
-                <h6>
-                    Has iniciado sesion como : {{user.dataValues.username}}
-                </h6>
-                <h6>
-                    Rol : {{user.dataValues.role}}
-                </h6>
+                <h2 class="p1"style="color:black; margin-left:15px; margin-top:25px;"> <b>Bienvenido a Konstructiva App</b>
+                    {{user.dataValues.username}} </h2>
+                <h3 class="p1"style="color:black; margin-left:15px; margin-top:25px;"> <b>Tu rol es: </b>
+                    {{user.dataValues.role}} </h3>
             </center>
-
-
-
-            <a href="/contable/user" button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-               class="btn btn-brown2 btn-block" type="submit">
-                Entrar
-            </a>
-
-
-        </div>
+                <a href="/contador/info-proyectos"
+                    style="color:black;display: block; margin: 35% ; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown1 btn-block" type="submit">
+                    <b class="p1">Entrar al sistema</b>
+                </a>
+                <a href="/login"
+                    style="color:black;display: block; margin: 35%; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown btn-block" type="submit">
+                    <b class="p1">Salir del sistema</b>
+                </a>
+                <!--
+                <button onclick="location.href=/login"
+                    style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown" type="submit">
+                    <b class="p1">Salir del sistema</b>
+                </button>-->
+        </form>
     </div>
 </div>

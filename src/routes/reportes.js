@@ -20,4 +20,16 @@ router.get('/reportes/info-grafica', async (req,res) =>{
     res.render("reportes/reporteGrafico1.hbs", { proyectos });
 });
 
+//PARTE DE CONTADOR
+
+router.get('/contador/info-proyectos', async(req, res) => {
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente, Contrato ]});
+    res.render("users/reportesProyecto", {proyectos});
+});
+
+router.get('/contador/info-grafica', async (req,res) =>{
+    const proyectos = await Proyecto.findAll({ order: [ [ 'date', 'DESC' ] ], include: [ Cliente, Contrato ]});
+    res.render("users/reporteGrafico1.hbs", { proyectos });
+});
+
 module.exports = router;
