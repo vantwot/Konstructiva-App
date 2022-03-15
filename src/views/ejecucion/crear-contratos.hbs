@@ -4,9 +4,9 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -14,12 +14,12 @@
                 <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
+                <li><a href="/login" class="btn btn-red"><b>Cerrar sesió</b>n </a></li>
 
             </ul>
         </div>
-        <div class="nav-content">
-            <ul class="tabs tabs-transparent">
+        <div class="nav-content p1">
+            <ul class="tabs tabs-transparent p1">
                 <li class="tab">
                     <a style="color:white;" href="/ejecucion/contratost">Lista de contratos temporales</a>
                 </li>
@@ -44,33 +44,31 @@
 
     <div class="caja">
         <form action="/ejecucion/nuevo-contratost" method="POST">
-            <h5 style="color:black; margin-left:15px; margin-top:25px;">Detalles del contrato</h5>
+            <h5 class="p1" style="color:black; margin-left:15px; margin-top:25px;"><b>Detalles del contrato</b></h5>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black">Número del contrato</label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Número del contrat</i>o</b></label>
                 <input type="number" style="color:black;margin-right:5px;" name="numero" class="form-control"
                        autofocus />
             </div>
             <div class="form-grop" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;">Nombre del contratista</label>
+                <label class="p1" style="color:black;margin-left: 15px; margin-top:15px;"><b><i>Nombre del contratista</i></b></label>
                 <input onkeypress="return /[a-z ]/i.test(event.key)" style="background-color:#F6EABE;margin-right:5px;"
                        class="form-control" name="nombre">
             </div>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black">Cédula</label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Cédula</i></b></label>
                 <input type="number" style="color:black;margin-right:5px;" name="cedula" class="form-control" />
             </div>
             <div class="form-group" style="margin:10px;">
-                <label style="color:black; margin-left: 15px; margin-top:15px">Fecha Inicio del contrato</label>
+                <label class="p1" style="color:black; margin-left: 15px; margin-top:15px"><b><i>Fecha inicio del contrato</i></b></label>
                 <input type="text" style="margin-right:5px;" class="datepicker form-control" name="fecha_inicio">
             </div>
             <div class="form-group" style="margin:10px;">
-                <label style="color:black; margin-left: 15px; margin-top:15px">Fecha Final del contrato</label>
+                <label class="p1" style="color:black; margin-left: 15px; margin-top:15px"><b><i>Fecha de finalización del contrato</i></b></label>
                 <input type="text" style="margin-right:5px;" class="datepicker form-control" name="fecha_fin">
             </div>
-
-
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black">Valor del contrato</label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Valor del contrato</i></b></label>
                 <!--<input type="number" style="color:black;margin-right:5px;" name="valorct" class="form-control" />-->
                 <!--Cambios hechos para poner el signo peso-->
                 <div>
@@ -78,13 +76,11 @@
                     <input type="number" style="padding-left: 8px;" name="valor" class="form-control">
                 </div>
             </div> <!-- lo puedes poner con el signo pesos?-->
-
-
             <div id="hidden-inputs"></div>
             <div class="form-group">
-                <button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                        class="btn btn-brown2 btn-block" type="submit">
-                    Crear contrato temporal
+                <button style="color:black; block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                        class="btn btn-brown btn-block" type="submit">
+                    <b class="p1">Crear contrato temporal</b>
                 </button>
             </div>
         </form>

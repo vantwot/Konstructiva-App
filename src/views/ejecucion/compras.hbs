@@ -3,9 +3,9 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -13,11 +13,11 @@
                 <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
+                <li><a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a></li>
             </ul>
         </div>
-        <div class="nav-content">
-            <ul class="tabs tabs-transparent">
+        <div class="nav-content p1">
+            <ul class="tabs tabs-transparent p1">
                 <li class="tab">
                     <a style="color:white;" href="/ejecucion/contratost">Lista de contratos temporales</a>
                 </li>
@@ -36,17 +36,17 @@
             <div class="col-md-3" style="margin:30px;">
                 <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            Nombre Proyecto :
+                        <h6 class="p1 card-subtitle mb-2 text-muted">
+                            <b>Nombre Proyecto</b>
                         </h6>
                         <p>
-                            {{this.dataValues.namep}}
+                            <i>{{this.dataValues.namep}}</i>
                         </p>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            Anticipos :
+                        <h6 class="p1 card-subtitle mb-2 text-muted">
+                            <b>Anticipos</b>
                         </h6>
                         <p>
-                            {{this.dataValues.anticipo}}
+                            <i>{{this.dataValues.anticipo}}</i>
                         </p>
                         <center>
                             <form action="/ejecucion/subirArchivo/{{this.dataValues.id}}" method="POST"
@@ -56,8 +56,8 @@
                                         <label style="color:black;margin-left: 15px; margin-top:15px;">link</label>
                                         <input type="text" style="margin-right:5px;" class="form-control" name="link">
                                         <button
-                                            style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                                            class="btn btn-brown2 btn-block" type="submit">
+                                            style="color:black;display: block;margin-bottom:14px;width:190px; height:38px"
+                                            class="btn btn-brown btn-block" type="submit">
                                             Guardar factura
                                         </button>
                                     </div>
@@ -70,12 +70,15 @@
             {{else}}
             <center>
                 <div class="card mx-auto">
-                    <div class="card-body">
-                        <p class="lead" style="text-align: center;">
-                            Todavía no has creado un proyecto
-                        </p>
-                    </div>
+                <div class="card-body">
+                    <p class="lead p1" style="text-align: center;">
+                        Todavía no has registrado un proyecto
+                    </p>
+                    <a href="/proyecto/add" style="color:black" class="p1 btn btn-brown2 btn-block">
+                        <b>Crear un proyecto</b>
+                    </a>
                 </div>
+            </div>
         </div>
         </center>
         {{/each}}

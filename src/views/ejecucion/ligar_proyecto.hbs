@@ -3,9 +3,9 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
-        <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -13,11 +13,11 @@
                 <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:white;" href="collapsible.html">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <a href="/login" class="btn btn-red">Cerrar sesión </a>
+                <a href="/login" class="btn btn-red"><b>Cerrar sesió</b>n </a>
             </ul>
         </div>
-        <div class="nav-content">
-            <ul class="tabs tabs-transparent">
+        <div class="nav-content p1">
+            <ul class="tabs tabs-transparent p1">
                 <li class="tab">
                     <a style="color:white;" href="/ejecucion/contratost">Lista de contratos temporales</a>
                 </li>
@@ -42,51 +42,31 @@
 
     <div class="row" style="background-color: #F6D7A7;">
         {{#each proyectos}}
-        <div class="col-md-3" style="margin:30px">
+        <div class="col-md-3" style="margin:30px;">
             <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">
-                        Nombre Proyecto :
+                        <b class="p1">Nombre Proyecto </b>
                     </h6>
                     <p>
-                        {{this.dataValues.namep}}
+                        <i class="p1">{{this.dataValues.namep}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        Fecha Inicio :
+                        <b class="p1">Fecha de incio</b>
                     </h6>
                     <p>
-                        {{this.dataValues.fecha_inicio}}
+                        <i>{{this.dataValues.fecha_inicio}}</i>
                     </p>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        Fecha Fin :
+                        <b class="p1">Fecha de finalización</b>
                     </h6>
                     <p>
-                        {{this.dataValues.fecha_fin}}
+                        <i class="p1">{{this.dataValues.fecha_fin}}</i>
                     </p>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        Presupuesto :
-                    </h6>
-                    <p>
-                        {{this.dataValues.presupuesto}}
-                    </p>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        Anticipos :
-                    </h6>
-                    <p>
-                        {{this.dataValues.anticipo}}
-                    </p>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        Saldo :
-                    </h6>
-
-                    <p>
-                        {{subtract this.dataValues.presupuesto this.dataValues.anticipo}}
-                    </p>
-
                     <center>
-                        <a href="/ejecucion/{{../id_contrato}}/asignar/{{this.dataValues.id}}" style="color: black;" class="btn btn-brown2 btn-lg"
-                           type="submit">
-                            Asignar
+                        <a href="/ejecucion/{{../id_contrato}}/asignar/{{this.dataValues.id}}" style="color: black;"
+                            class="btn btn-brown btn-lg" type="submit">
+                            <b class="p1">Asignar</b>
                         </a>
                     </center>
                 </div>
@@ -96,11 +76,11 @@
         <center>
             <div class="card mx-auto">
                 <div class="card-body">
-                    <p class="lead" style="text-align: center;">
-                        Todavía no has creado un proyecto
+                    <p class="lead p1" style="text-align: center;">
+                        Todavía no has registrado un proyecto
                     </p>
-                    <a href="/proyecto/add" class="btn btn-or btn-block">
-                        Crear un proyecto
+                    <a href="/proyecto/add" style="color:black" class="p1 btn btn-brown2 btn-block">
+                        <b>Crear un proyecto</b>
                     </a>
                 </div>
             </div>
