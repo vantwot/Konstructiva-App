@@ -4,6 +4,7 @@ const Role = db.role;
 const session = require('express-session');
 const config = require("../config/auth.config");
 
+
 const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
@@ -31,8 +32,10 @@ exports.signin = (req, res) => {
         }
     }) 
         .then(user => {
-            if (!user) {
-                return res.status(404).send({ message: "User Not found." });
+            if (!user) { 
+                const errors = [];
+                errors.push({ text: 'Usuario no encontrado' });
+                return res.render("users/login", {errors});       
             }
 
             var passwordIsValid = bcrypt.compareSync(
@@ -41,10 +44,9 @@ exports.signin = (req, res) => {
             );
 
             if (!passwordIsValid) {
-                return res.status(401).send({
-                    accessToken: null,
-                    message: "Invalid Password!"
-                });
+                const errors = [];
+                errors.push({ text: 'Contraseña incorrecta' });
+                return res.render("users/login", {errors});          
             }
 
             if (user.role == "administrador") { //Si es admin mostrar cinco modulos

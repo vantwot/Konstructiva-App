@@ -10,11 +10,20 @@
     </div>
 </div>
 
+
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
             <form action="/api/auth/signin" method="POST">
                 <div class="form-group" style="margin:10px;">
+                                {{#each errors}}
+    <div class="ROBOTOSLAB">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {{/each}}
                     <label><b class="p1">Usuario</b></label>
                     <input onkeypress="return /[a-z,1-9]/i.test(event.key)" 
                         class="form-control" name="username" required>
