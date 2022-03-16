@@ -29,6 +29,7 @@
     </nav>
 
     <div class="row" style="background-color: #F6D7A7;">
+    {{#if proyectos}}
         <script>
             let nombres = [];
             let valores = [];
@@ -180,5 +181,14 @@
                 }
             });
         </script>
+    {{else}}
+        <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead p1" style="text-align: center;">
+                    Todavía no has registrado un proyecto
+                </p>
+            </div>
+        </div>
+    {{/if}}
     </div>
 </div>
