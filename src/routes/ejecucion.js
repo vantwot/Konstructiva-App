@@ -168,8 +168,12 @@ router.post('/ejecucion/nuevo-contratost', async (req, res) => {
 //PARTE DE FACTURAS
 
 router.get('/user/compras', async (req, res) => {
-    const proyectos = await Proyecto.findAll({ order: [['date', 'DESC']], include: [Cliente] });
-    res.render("users/vistaCompras", { proyectos });
+    const facturas = await Factura.findAll({ include: Proyecto });
+    res.render("users/vistaCompras", { facturas });
+});
+
+router.get('/user/crear', (req, res) => {
+    res.render('users/crearFactura');
 });
 
 router.get('/factura/crear', (req, res) => {
@@ -180,6 +184,8 @@ router.get('/factura/lista', async (req, res) => {
     const facturas = await Factura.findAll({ include: Proyecto });
     res.render("ejecucion/listaFactura", { facturas });
 });
+
+
 
 router.post('/factura/nuevo', async (req, res) => {
     const { numero, nombre, direccion, ciudad, telefono, valorTotal } = req.body;
