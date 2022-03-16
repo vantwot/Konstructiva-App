@@ -290,6 +290,48 @@ router.get('/factura/:id_factura/ver', async (req, res) => {
 
 });
 
+router.get('/factura/modificar/:id',async(req, res) => {
+    const facturas = await Factura.findByPk(req.params.id);
+    res.render('ejecucion/editarFactura', {facturas});
+});
 
+router.post('/ejecucion/editarFactura/:id', async(req, res) => {
+    const { numero, nombre, direccion, ciudad, telefono } = req.body;
+    const facturas = await Factura.findByPk(req.params.id);
+    const errors = [];
+    if (!numero) {
+        errors.push({ text: 'Por favor inserte un número de factura' });
+    }
+    if (!nombre) {
+        errors.push({ text: 'Por favor inserte una fecha de nombre' });
+    }
+    if (!direccion) {
+        errors.push({ text: 'Por favor inserte una fecha de fin' });
+    }
+    if (!ciudad) {
+        errors.push({ text: 'Por favor inserte una ciudad' });
+    }
+    if (!telefono) {
+        errors.push({ text: 'Por favor inserte un telefono' });
+    }
+    if(errors.length > 0){
+        res.render('ejecucion/editarFactura', {
+            facturas,
+            errors,
+            numero,
+            nombre,
+            direccion,
+            ciudad,
+            telefono
+        });
+    } else {
+        await Factura.update({ numero: numero, nombre: nombre, direccion: direccion, ciudad: ciudad, telefono: telefono }, {
+            where: {
+                id: req.params.id, 
+            }
+        });
+        res.redirect('/factura/lista');
+    }
+});
 
 module.exports = router;

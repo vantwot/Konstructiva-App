@@ -72,6 +72,14 @@
                         {{/if}}
                     </p>
 
+                    <center>
+                        <button onclick="window.location.href='/factura/modificar/{{this.dataValues.id}}'"
+                            style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:14px;width:190px; height:38px"
+                            class="btn btn-brown1" type="submit">
+                            <b class="p1">Editar</b>
+                        </button>
+                    </center>
+                    
                     <button onclick="window.location.href='/factura/{{this.dataValues.id}}/ver'"
                         style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:14px;width:190px; height:38px"
                         class="btn btn-brown" type="submit">
