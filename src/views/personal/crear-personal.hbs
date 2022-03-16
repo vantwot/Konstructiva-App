@@ -4,9 +4,9 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -14,7 +14,7 @@
                 <li><a style="color:rgb(255, 255, 255);" href="/ejecucion/contratost">Ejecucion</a></li>
                 <li><a style="color:rgb(0, 0, 0);" href="/personal/lista">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
+                <li><a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a></li>
 
             </ul>
         </div>
@@ -40,22 +40,21 @@
         </div>
     </div>
     {{/each}}
-
     <div class="caja">
         <form action="/personal/nuevo" method="POST">
-            <h5 style="color:black; margin-left:15px; margin-top:25px;">Detalles del personal</h5>
+            <h5 class="p1" style="color:black; margin-left:15px; margin-top:25px;"><b>Detalles del personal</b></h5>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black">Número del contrato</label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><i><b>Número del contrato</b></i></label>
                 <input type="number" style="color:black;margin-right:5px;" name="numero" class="form-control"
                        autofocus />
             </div>
             <div class="form-grop" style="margin:10px;">
-                <label style="color:black;margin-left: 15px; margin-top:15px;">Nombre del nuevo personal</label>
+                <label class="p1" style="color:black;margin-left: 15px; margin-top:15px;"><b><i>Nombre del nuevo personal</i></b></label>
                 <input onkeypress="return /[a-z ]/i.test(event.key)" style="background-color:#F6EABE;margin-right:5px;"
                        class="form-control" name="nombre">
             </div>
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black">Cédula</label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Cédula</i></b></label>
                 <input type="number" style="color:black;margin-right:5px;" name="cedula" class="form-control" />
             </div>
             <div class="form-group" style="margin:10px;">
@@ -72,7 +71,7 @@
             </div>           
 
             <div class="form-group col s5" style="margin:10px;">
-                <label style="margin-left: 15px; margin-top:15px; color:black">Valor</label>
+                <label class="p1" style="margin-left: 15px; margin-top:15px; color:black"><b><i>Valor</i></b></label>
                 <!--<input type="number" style="color:black;margin-right:5px;" name="valorct" class="form-control" />-->
                 <!--Cambios hechos para poner el signo peso-->
                 <div>
@@ -85,8 +84,8 @@
             <div id="hidden-inputs"></div>
             <div class="form-group">
                 <button style="display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                        class="btn btn-brown2 btn-block" type="submit">
-                    Crear nuevo personal
+                        class="p1 btn btn-brown2 btn-block" type="submit">
+                    <b style="color:black">Crear nuevo personal</b>
                 </button>
             </div>
         </form>

@@ -5,9 +5,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <div class="body">
-    <nav class="nav-extended" style="background-color:#87AAAA; ">
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;">Konstructiva app</a>
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
@@ -15,8 +15,8 @@
                 <li><a style="color:rgb(255, 255, 255);" href="/ejecucion/personalt">Ejecucion</a></li>
                 <li><a style="color:rgb(0, 0, 0);" href="/personal/lista">Personal</a></li>
                 <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
-                <li><a href="/login" class="btn btn-red">Cerrar sesión </a></li>
-</ul>
+                <li><a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a></li>
+            </ul>
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -41,63 +41,54 @@
     </div>
     {{/each}}
 
-    <div class="row" style="background-color: #F6D7A7;">
-        <div class="col-md-4 mx-auto">
-            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
-                <div class="card-header">
-                    <h3>Editar Personal</h3>
-                </div>
-                <div class="card-body">
-                    <form action="/personal/editar-personal/{{personal.dataValues.id}}" method="POST">
-                        <input type="hidden" name="_method" value="PUT">
+    <div class="caja">
+        <form action="/personal/editar-personal/{{personal.dataValues.id}}" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <h5 class="p1" style="color:black; margin-left:15px; margin-top:25px;"> <b>Editar personal</b></h5>
 
-                        <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Numero</label>
-                            <input type="number" style="margin-right:5px;" name="numero" class="form-control" autofocus
-                                   value="{{personal.dataValues.numero}}" />
-                        </div>
-
-                        <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Nombre</label>
-                            <input type="text" style="margin-right:5px;" name="nombre" class="form-control" autofocus
-                                   value="{{personal.dataValues.nombre}}" />
-                        </div>
-
-                        <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Cedula</label>
-                            <input type="number" style="margin-right:5px;" name="cedula" class="form-control" autofocus
-                                   value="{{personal.dataValues.cedula}}" />
-                        </div>
-
-                        <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Profesion</label>
-                            <input type="text" style="margin-right:5px;" name="profesion" class="form-control" autofocus
-                                   value="{{personal.dataValues.profesion}}" />
-                        </div>
-
-
-                        <div class="form-group " style="margin:10px;">
-                            <label style="margin-left: 15px; margin-top:15px;">Valor</label>
-                            <input type="number" style="margin-right:5px;" name="valor" class="form-control" autofocus
-                                   value="{{personal.dataValues.valor}}" />
-                        </div>
-
-
-
-
-
-                        <div class="form-group">
-                            <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
-                                    class="btn btn-brown2 btn-block" type="submit">
-                                Editar
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
+            <div class="form-group " style="margin:10px;">
+                <label class="p1" style="margin-left: 15px; margin-top:15px;color:black"><b><i>Número</i></b></label>
+                <input type="number" style="margin-right:5px;" name="numero" class="form-control" autofocus
+                    value="{{personal.dataValues.numero}}" />
             </div>
-        </div>
+
+            <div class="form-group " style="margin:10px;">
+                <label class="p1" style="margin-left: 15px; margin-top:15px;color:black"><b><i>Nombre</i></b></label>
+                <input type="text" style="margin-right:5px;" name="nombre" class="form-control"
+                    value="{{personal.dataValues.nombre}}" />
+            </div>
+
+            <div class="form-group " style="margin:10px;">
+                <label class="p1" style="margin-left: 15px; margin-top:15px;color:black"><b><i>Cédula</i></b></label>
+                <input type="number" style="margin-right:5px;" name="cedula" class="form-control"
+                    value="{{personal.dataValues.cedula}}" />
+            </div>
+
+            <div class="form-group " style="margin:10px;">
+                <label class="p1" style="margin-left: 15px; margin-top:15px;color:black"><b><i>Profesión</i></b></label>
+                <input type="text" style="margin-right:5px;" name="profesion" class="form-control"
+                    value="{{personal.dataValues.profesion}}" />
+            </div>
+
+
+            <div class="form-group " style="margin:10px;">
+                <label class="p1" style="margin-left: 15px; margin-top:15px;color:black"><b><i>Valor</i></b></label>
+                <input type="number" style="margin-right:5px;" name="valor" class="form-control"
+                    value="{{personal.dataValues.valor}}" />
+            </div>
+
+            <div class="form-group">
+                <button style="color:black;display: block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown btn-block" type="submit">
+                    <b style="color:black">Editar</b>
+                </button>
+            </div>
+
+        </form>
     </div>
+</div>
+</div>
+</div>
 </div>
 
 <script>
