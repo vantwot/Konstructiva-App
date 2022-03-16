@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<div class="body">
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a style="color:white;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a style="color:black;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:white;" href="/personal/lista">Personal</a></li>
+                <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <li><a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a></li>
+
+            </ul>
+        </div>
+        <div class="nav-content p1">
+            <ul class="tabs tabs-transparent p1">
+                <li class="tab">
+                    <a style="color:black;" href="/ejecucion/contratost">Lista de contratos temporales</a>
+                </li>
+                <li class="tab">
+                    <a class="active" style="color:white;" href="/ejecucion/crear-contratost">
+                        Crear contrato
+                        temporal
+                    </a>
+                </li>
+                <li class="tab"><a style="color:white;" href="/ejecucion/compra">Compras</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row" style="background-color: #F6D7A7;">
+        {{#each facturas}}
+        <div class="col-md-3" style="margin:30px;">
+            <div class="card" style="border: 5px solid #87AAAA; background:#F6EABE;">
+                <div class="card-body">
+                    <h6 class="p1 card-subtitle mb-2 text-muted">
+                        <b>Factura numero: </b>
+                    </h6>
+                    <p>
+                        <i class="p1">{{this.dataValues.numero}}</i>
+                    </p>
+                    <h6 class="p1 card-subtitle mb-2 text-muted">
+                        <b>Nombre Factura:</b>
+                    </h6>
+                    <p>
+                        <i>{{this.dataValues.nombre}}</i>
+                    </p>
+
+                    <h6 class="p1 card-subtitle mb-2 text-muted">
+                        <b>Valor:</b>
+                    </h6>
+                    <p>
+                        <i>{{this.dataValues.valorTotal}}</i>
+                    </p>
+
+
+                    <h6 class="p1 card-subtitle mb-2 text-muted" style="color: black;">
+                        <b>Proyecto Asignado</b>
+                    </h6>
+
+                    <p>
+                        {{#if this.dataValues.proyecto}}
+                        <i>{{this.dataValues.proyecto.dataValues.namep}}</i>
+                        {{else}}
+                        <i style="color:black ;">No hay un proyecto asignado</i>
+                        {{/if}}
+                    </p>
+
+                    <button onclick="window.location.href='/factura/{{this.dataValues.id}}/ver'"
+                        style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:14px;width:190px; height:38px"
+                        class="btn btn-brown" type="submit">
+                        <b class="p1">Ver Factura</b>
+                    </button>
+
+
+                    <center>
+                        <form action="/ejecucion/eliminarFactura/{{this.dataValues.id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button
+                                style="color:black; block;margin-top:5px; margin-bottom:14px;width:190px; height:38px"
+                                class="p1 btn btn-brown2 btn-block" type="submit">
+                                <b>Eliminar</b>
+                            </button>
+                        </form>
+                    </center>
+                    <center>
+                        <p>
+                            {{#if this.dataValues.proyecto}}
+                            {{else}}
+                            <button onclick="window.location.href='/factura/{{this.dataValues.id}}/asignar'"
+                                style="color:black; display: block; margin: 0 auto; margin-top:15px; margin-bottom:14px;width:190px; height:38px"
+                                class="btn btn-brown" type="submit">
+                                <b class="p1">Asignar proyecto</b>
+                            </button>
+                            {{/if}}
+                        </p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {{else}}
+
+        <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead p1" style="text-align: center;">
+                    Todavía no has creado una factura
+                </p>
+                <a style="color:black" href="/factura/crear" class="p1 btn btn-brown2 btn-block">
+                    <b>Crear una factura</b>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{/each}}

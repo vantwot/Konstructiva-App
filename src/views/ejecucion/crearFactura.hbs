@@ -1,0 +1,159 @@
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<div class="body">
+    <nav class="nav-extended p1" style="background-color:#87AAAA; ">
+        <div class="nav-wrapper p1">
+            <a href="#" class=" brand-logo" style="margin-left: 20px; color:black;"><b>Konstructiva app</b></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a style="color:black;" href="/proyecto/lista">Proyectos</a></li>
+                <li><a style="color:white;" href="/cliente/lista">Clientes</a></li>
+                <li><a style="color:white;" href="/ejecucion/contratost">Ejecucion</a></li>
+                <li><a style="color:white;" href="/personal/lista">Personal</a></li>
+                <li><a style="color:white;" href="/reportes/info-proyectos">Reportes</a></li>
+                <a href="/login" class="btn btn-red"><b>Cerrar sesión</b> </a>
+            </ul>
+        </div>
+        <div class="nav-content p1">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a style="color:white;" href="/proyecto/lista">Lista de proyectos</a></li>
+                <li class="tab"><a style="color:black;" href="/proyecto/add">Crear</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {{#each errors}}
+    <div class="ROBOTOSLAB">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {{/each}}
+
+    <div class="caja p1">
+        <form action="/factura/nuevo" method="POST">
+            <h5 class="p1"style="color:black; margin-left:15px; margin-top:25px;"> <b>Detalles Factura</b></h5>
+            <div class="form-group col s5" style="margin:10px;">
+                <label class="p1"style="margin-left: 15px; margin-top:15px; color:black"><b><i>Id factura</i></b></label>
+                <input type="number" style="color:black;margin-right:5px;" name="numero" class="form-control" autofocus />
+            </div>
+            <div class="form-grop" style="margin:10px;">
+                <label class="p1"style="color:black;margin-left: 15px; margin-top:15px;"><b><i>Nombre</i></b></label>
+                <input type="text" style="margin-right:5px;" class="form-control" name="nombre">
+            </div>
+            <div class="form-group" style="margin:10px;">
+                <label class="p1"style="color:black; margin-left: 15px; margin-top:15px"><b><i>Direccion</i></b></label>
+                <input type="text" style="margin-right:5px;" class="form-control" name="direccion">
+            </div>
+
+            <div class="form-group" style="margin:10px;">
+                <label class="p1"style="color:black; margin-left: 15px; margin-top:15px"><b><i>Ciudad</i></b></label>
+                <input type="text" style="margin-right:5px;" class="form-control" name="ciudad">
+            </div>
+
+            <div class="form-group" style="margin:10px;">
+                <label class="p1"style="color:black; margin-left: 15px; margin-top:15px"><b><i>Telefono</i></b></label>
+                <input type="number" style="margin-right:5px;" class="form-control" name="telefono">
+            </div>
+
+            <h5 class="p1"style="color: black; margin-left:15px; margin-top:25px;"><b>Material</b></h5>
+            <div class="row form-group">
+                <div class="form-group col s6" style="margin:10px;">
+                    <label class="p1"style="color:black" for="nombre-material"><i>Nombre del material</i></label>
+                    <input id="nombre-material" type="text" name="nombre">
+                </div>
+                <div class="form-group col s6" style="margin:10px;">
+                    <label class="p1"style="color:black" for="valor-material"><i>Valor del material</i></label>
+                    <input id="valor-material" type="number" name="valor">
+                </div>
+
+                <div class="form-group col-auto">
+                    <button id="agregar-btn" style="color:black;   display: block; margin-top:30px; margin-right:20px;"
+                        class="btn btn-brown1 p1">
+                        <b>Agregar ítem</b>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group" style="color:black; margin-left:30px; margin-right:30px; margin-bottom:20px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="p1">Nombre del ítem</th>
+                            <th class="p1">Valor</th>
+                            <th class="p1">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-presupuesto">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="p1" colspan="1"> <i>Total</i></th>
+                            <td id="total-value">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div id="hidden-inputs"></div>
+            <div class="form-group">
+                <button style="color:black; block; margin: 0 auto; margin-top:30px; margin-bottom:25px;"
+                    class="btn btn-brown2 btn-block" type="submit">
+                    <b class="p1">Crear factura</b>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('.datepicker').datepicker();
+
+            var materials = []
+
+            function actualizar_total() {
+                total = 0
+                $("#hidden-inputs").empty()
+                materials.forEach((e, index) => {
+                    total += parseInt(e.valor)
+                    inputNombre = `<input type="hidden" name="[valorTotal][${index}][nombre]" value="${e.nombre}"/>`
+                    inputValor = `<input type="hidden" name="[valorTotal][${index}][valor]" value="${e.valor}"/>`
+                    $("#hidden-inputs").append(inputNombre, inputValor)
+                })
+                $('#total-value').html(total)
+            }
+
+            $("#tabla-presupuesto").delegate(".eliminar-btn", "click", e => {
+                e.preventDefault();
+                column = $(e.target).parent().parent();
+                index = column.index();
+                materials.splice(index, 1);
+                column.remove();
+                actualizar_total();
+            })
+
+            $('#agregar-btn').click(e => {
+                e.preventDefault()
+                nombre = $('#nombre-material');
+                valor = $('#valor-material');
+                materials.push({ nombre: nombre.val(), valor: valor.val() })
+                tabla = $('#tabla-presupuesto');
+                newHtml = `<tr><td>${nombre.val()}</td><td>${valor.val()}</td><td><button style="color:black;"class="eliminar-btn btn btn-brown p1">Eliminar</button></td></tr>`
+                tabla.append(newHtml);
+                actualizar_total();
+
+                nombre.val('')
+                valor.val('')
+            })
+
+            $("form").submit(function () {
+                $('#nombre-material').remove();
+                $('#valor-material').remove();
+            });
+        });
+    </script>
+</div>
